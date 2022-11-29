@@ -9,7 +9,7 @@ class School(models.Model):
     description = models.TextField(max_length=400, null=True, blank=True, verbose_name='Description')
     type = models.TextField(default=CHOICES[0], choices=CHOICES,
                             null=False, blank=False, verbose_name='Type')
-    address = models.JSONField(default='{}')
+    address = models.JSONField(default=dict)
     setting = models.CharField(max_length=100, null=False, blank=False, verbose_name='Setting')
     webpage = models.URLField(max_length=100, blank=True, null=True, verbose_name="Webpage")
 
@@ -24,7 +24,7 @@ class School(models.Model):
 
 class Rating(models.Model):
     name = models.CharField(max_length=100, null=False, blank=False, verbose_name='Name')
-    datetime = models.DateTimeField(auto_now_add=True, null=False, blank=False, verbose_name='Datetime')
+    date_created = models.DateTimeField(auto_now_add=True, null=False, blank=False, verbose_name='Datetime')
 
 
 
