@@ -41,7 +41,7 @@ class SchoolRating(models.Model):
     school = models.ForeignKey('school_rating.School', on_delete=models.CASCADE,
                                related_name='school_ratings', verbose_name='School Rating')
     rating = models.ForeignKey('school_rating.Rating', on_delete=models.CASCADE,
-                               related_name='school_ratings', verbose_name='School Rating')
+                               related_name='rating_schools', verbose_name='School Rating')
     score = models.IntegerField(null=True, blank=True, verbose_name='Score')
     date_created = models.DateTimeField(auto_now_add=True, verbose_name='Date Created')
 

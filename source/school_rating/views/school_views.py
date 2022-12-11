@@ -4,7 +4,7 @@ from rest_framework import status
 from django.http import Http404
 
 from school_rating.models import School
-from school_rating.serializers import SchoolSerializer
+from school_rating.serializers.school_serializers import SchoolSerializer, SchoolDetailSerializer
 
 
 class SchoolListView(APIView):
@@ -33,12 +33,12 @@ class SchoolDetailView(APIView):
 
     def get(self, request, pk, format=None):
         school = self.get_object(pk)
-        serializer = SchoolSerializer(school)
+        serializer = SchoolDetailSerializer(school)
         return Response(serializer.data)
 
     def put(self, request, pk, format=None):
-        transformer = self.get_object(pk)
-        serializer = SchoolSerializer(transformer, data=request.data)
+        school = self.get_object(pk)
+        serializer = SchoolSerializer(school, data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)

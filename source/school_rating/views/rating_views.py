@@ -4,7 +4,7 @@ from rest_framework import status
 from django.http import Http404
 
 from school_rating.models import Rating
-from school_rating.serializers import RatingSerializer
+from school_rating.serializers.rating_serializers import RatingSerializer, RatingDetailSerializer
 
 
 class RatingListView(APIView):
@@ -33,30 +33,31 @@ class RatingDetailView(APIView):
             raise Http404
 
     def get(self, request, pk, format=None):
-        school = self.get_object(pk)
-        serializer = RatingSerializer(school)
+        rating = self.get_object(pk)
+        print(rating)
+        serializer = RatingDetailSerializer(rating)
         return Response(serializer.data)
-
-    def put(self, request, pk, format=None):
-        transformer = self.get_object(pk)
-        serializer = RatingSerializer(transformer, data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-    def patch(self, request, pk, format=None):
-        school = self.get_object(pk)
-        serializer = RatingSerializer(school,
-                                           data=request.data,
-                                           partial=True)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-
-    def delete(self, request, pk, format=None):
-        school = self.get_object(pk)
-        school.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
+    #
+    # def put(self, request, pk, format=None):
+    #     school = self.get_object(pk)
+    #     serializer = RatingSerializer(school, data=request.data)
+    #     if serializer.is_valid():
+    #         serializer.save()
+    #         return Response(serializer.data)
+    #     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    #
+    # def patch(self, request, pk, format=None):
+    #     school = self.get_object(pk)
+    #     serializer = RatingSerializer(school,
+    #                                        data=request.data,
+    #                                        partial=True)
+    #     if serializer.is_valid():
+    #         serializer.save()
+    #         return Response(serializer.data)
+    #     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    #
+    #
+    # def delete(self, request, pk, format=None):
+    #     school = self.get_object(pk)
+    #     school.delete()
+    #     return Response(status=status.HTTP_204_NO_CONTENT)
