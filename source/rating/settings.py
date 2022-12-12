@@ -46,6 +46,7 @@ INSTALLED_APPS = [
 
     # My Apps
     'school_rating',
+    'accounts',
 ]
 
 MIDDLEWARE = [
@@ -139,4 +140,11 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_ROOT = BASE_DIR.joinpath("uploads")
-# MEDIA_URL = "media/"
+MEDIA_URL = "media/"
+
+
+# REST_FRAMEWORK = {
+#     'DEFAULT_AUTHENTICATION_CLASSES': (
+#         'rest_framework.authentication.TokenAuthentication',
+#     )
+# }
