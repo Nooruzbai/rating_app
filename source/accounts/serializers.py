@@ -1,22 +1,66 @@
-from django.contrib.auth import get_user_model
-from django.contrib.auth.password_validation import validate_password
+from django.contrib.auth import authenticate
 from rest_framework import serializers
-from rest_framework.validators import UniqueValidator
 
-from accounts.models import Profile
+from .models import CustomUser, Profile
 
-User = get_user_model()
+class CustomUserSerializer(serializers.ModelSerializer):
+    # bio = serializers.SerializerMethodField(source=CustomUser.profile)
+    """
+    Serializer class to serialize CustomUser model.
+    """
+
+    class Meta:
+        model = CustomUser
+        fields = ("id", "username", "email", 'first_name', 'last_name',)
+
+    # def get_profile_info(self,obj):
+    #     return obj.profile
 
 
-class ProfileSerializer(serializers.ModelSerializer):
-  model = Profile
-  fields = '__all__'
 
-class UserProfileSerializer(serializers.ModelSerializer):
-  profile = ProfileSerializer(required=True)
-  class Meta:
-    model = User
-    fields = '__all__'
+class UserRegistrationSerializer(serializers.ModelSerializer):
+    """
+    Serializer class to serialize registration requests and create a new user.
+    """
 
-  def create(self, validated_data):
-    user
+    class Meta:
+        model = CustomUser
+        fields = ("id", "username", "email", "password")
+        extra_kwargs = {"password": {"write_only": True}}
+
+    def create(self, validated_data):
+        return CustomUser.objects.create_user(**validated_data)
+
+class UserLoginSerializer(serializers.Serializer):
+    """
+    Serializer class to authenticate users with email and password.
+    """
+
+    email = serializers.CharField()
+    password = serializers.CharField(write_only=True)
+
+    def validate(self, data):
+        user = authenticate(**data)
+        if user and user.is_active:
+            return user
+        raise serializers.ValidationError("Incorrect Credentials")
+
+
+
+class ProfileSerializer(CustomUserSerializer):
+    """
+    Serializer class to serialize the user Profile model
+    """
+
+    class Meta:
+        model = Profile
+        fields = ("bio",)
+
+class ProfileAvatarSerializer(serializers.ModelSerializer):
+    """
+    Serializer class to serialize the avatar
+    """
+
+    class Meta:
+        model = Profile
+        fields = ("profile_picture",)
