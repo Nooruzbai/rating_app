@@ -3,30 +3,38 @@ from rest_framework import serializers
 
 from .models import CustomUser, Profile
 
+
 class CustomUserSerializer(serializers.ModelSerializer):
-    # bio = serializers.SerializerMethodField(source=CustomUser.profile)
     """
     Serializer class to serialize CustomUser model.
+    
     """
-
+    bio = serializers.CharField(source='profile.bio')
     class Meta:
         model = CustomUser
-        fields = ("id", "username", "email", 'first_name', 'last_name',)
 
-    # def get_profile_info(self,obj):
-    #     return obj.profile
-
+        fields = ("id", "username", "email",'password','first_name', 'last_name', 'bio')
 
 
 class UserRegistrationSerializer(serializers.ModelSerializer):
     """
     Serializer class to serialize registration requests and create a new user.
     """
-
+    confirm_password = serializers.CharField(max_length=100, allow_blank=False, allow_null=False, write_only=True)
     class Meta:
         model = CustomUser
-        fields = ("id", "username", "email", "password")
-        extra_kwargs = {"password": {"write_only": True}}
+        fields = ('id', 'username', 'first_name', 'last_name', 'email', 'password', 'confirm_password')
+        extra_kwargs = {'password': {'write_only': True},
+                        }
+
+    def validate(self, attrs):
+        data = super(UserRegistrationSerializer, self).validate(attrs)
+        password = data.get('password')
+        confirm_password = data.pop('confirm_password')
+        if password != confirm_password:
+            raise serializers.ValidationError('Password mismatch')
+        return data
+
 
     def create(self, validated_data):
         return CustomUser.objects.create_user(**validated_data)

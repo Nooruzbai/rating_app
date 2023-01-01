@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     # My Apps
     'school_rating',
     'accounts',
+    'news',
 ]
 
 MIDDLEWARE = [
