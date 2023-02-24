@@ -1,3 +1,4 @@
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
@@ -8,6 +9,7 @@ from school_rating.serializers.school_serializers import SchoolSerializer, Schoo
 
 
 class SchoolListView(APIView):
+
 
     def get(self, request, format=None):
         schools = School.objects.all()
@@ -25,6 +27,8 @@ class SchoolListView(APIView):
 
 
 class SchoolDetailView(APIView):
+
+    permission_classes = (IsAuthenticated,)
     def get_object(self, pk):
         try:
             return School.objects.get(pk=pk)

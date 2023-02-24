@@ -7,9 +7,10 @@ from .managers import CustomUserManager
 
 class CustomUser(AbstractUser):
     email = models.EmailField(_("email address"), unique=True)
+    is_verified = models.BooleanField(default=False)
 
     USERNAME_FIELD = "email"
-    REQUIRED_FIELDS = ["username", "first_name", "last_name"]
+    REQUIRED_FIELDS = ["username"]
 
     objects = CustomUserManager()
 
@@ -28,5 +29,5 @@ class Profile(models.Model):
         verbose_name_plural = 'Profiles'
 
     def __str__(self):
-        return f"Profile: {self.id}. {self.user.email}"
+        return f"Profile: {self.id}. {self.user}"
 

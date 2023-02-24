@@ -21,6 +21,8 @@ class UserRegistrationSerializer(serializers.ModelSerializer):
     Serializer class to serialize registration requests and create a new user.
     """
     confirm_password = serializers.CharField(max_length=100, allow_blank=False, allow_null=False, write_only=True)
+    first_name = serializers.CharField(max_length=100, allow_null=False, allow_blank=False, error_messages={"requierd": "User must have a first name"})
+    last_name = serializers.CharField(max_length=100, allow_blank=False, allow_null=False, error_messages={"requierd":"User must have a last name"})
     class Meta:
         model = CustomUser
         fields = ('id', 'username', 'first_name', 'last_name', 'email', 'password', 'confirm_password')
@@ -62,7 +64,7 @@ class ProfileSerializer(CustomUserSerializer):
 
     class Meta:
         model = Profile
-        fields = ("bio",)
+        fields = '__all__'
 
 class ProfileAvatarSerializer(serializers.ModelSerializer):
     """
