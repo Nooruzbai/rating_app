@@ -31,14 +31,14 @@ class UserRegistrationAPIView(GenericAPIView):
         serializer.save()
         user_data = serializer.data
         user = CustomUser.objects.get(email=user_data['email'])
-        token = RefreshToken.for_user(user).access_token
+        token = RefreshToken.for_user(user)
         current_site = get_current_site(request).domain
         relative_link = reverse('accounts:verify_email')
-        absolute_url = 'http://'+current_site+relative_link+"?token="+str(token)
+        absolute_url = 'http://'+current_site+relative_link+"?token="+str(token.access_token)
         print(absolute_url)
         email_body = 'Hi ' + user.username+' Use link below to verify your email\n'+absolute_url
         data = {"email_body": email_body, "to_email": user.email, "email_subject":"Verify your email",
-                "tokens": {"access": str(token)}}
+                "tokens": {"refresh_token": str(token), "refresh": str(token.access_token)}}
         # Util.send_email(data)
         return Response(data, status=status.HTTP_201_CREATED)
 
