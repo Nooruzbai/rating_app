@@ -35,6 +35,7 @@ class UserRegistrationAPIView(GenericAPIView):
         current_site = get_current_site(request).domain
         relative_link = reverse('accounts:verify_email')
         absolute_url = 'http://'+current_site+relative_link+"?token="+str(token)
+        print(absolute_url)
         email_body = 'Hi ' + user.username+' Use link below to verify your email\n'+absolute_url
         data = {"email_body": email_body, "to_email": user.email, "email_subject":"Verify your email",
                 "tokens": {"access": str(token)}}
@@ -115,12 +116,12 @@ class VerifyEmail(GenericAPIView):
     def get(self, request):
         token = request.GET.get('token')
         try:
-           payload = jwt.decode(token, settings.SECRET_KEY, algorithms='HS256')
-           user = CustomUser.objects.get(id=payload['user_id'])
-           if not user.is_verified:
+            payload = jwt.decode(token, settings.SECRET_KEY, algorithms=["HS256"])
+            user = CustomUser.objects.get(id=payload['user_id'])
+            if not user.is_verified:
                user.is_verified = True
                user.save()
-           return  Response({'email': 'Successfully activated'}, status=status.HTTP_200_OK)
+            return  Response({'email': 'Successfully activated'}, status=status.HTTP_200_OK)
         except jwt.ExpiredSignatureError as identifier:
             return Response({'error': 'Activation Expired'}, status=status.HTTP_400_BAD_REQUEST)
         except jwt.exceptions.DecodeError as identifier:
