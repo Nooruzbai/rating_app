@@ -45,6 +45,7 @@ INSTALLED_APPS = [
 
     # Additional Apps for development
     'rest_framework_swagger',
+    'drf_yasg',
 
 
     # My Apps
@@ -156,6 +157,17 @@ REST_FRAMEWORK = {
 
 
 AUTH_USER_MODEL = 'accounts.CustomUser'
+
+SWAGGER_SETTINGS = {
+   'SECURITY_DEFINITIONS': {
+      'Bearer': {
+            'type': 'apiKey',
+            'name': 'Authorization',
+            'in': 'header'
+      }
+   }
+}
+
 
 SIMPLE_JWT = {
     "ACCESS_TOKEN_LIFETIME": timedelta(minutes=15),

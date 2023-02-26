@@ -1,3 +1,4 @@
+from drf_yasg.utils import swagger_auto_schema
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -10,13 +11,17 @@ from school_rating.serializers.school_serializers import SchoolSerializer, Schoo
 
 class SchoolListView(APIView):
 
-
+    @swagger_auto_schema(
+        operation_summary="Gets and lists all the schools.",
+    )
     def get(self, request, format=None):
         schools = School.objects.all()
         serializer = SchoolSerializer(schools, many=True)
         return Response(serializer.data)
 
-
+    @swagger_auto_schema(
+        operation_summary="Creates a new school.",
+    )
     def post(self, request, format=None):
         serializer = SchoolSerializer(data=request.data)
         if serializer.is_valid():
@@ -29,17 +34,25 @@ class SchoolListView(APIView):
 class SchoolDetailView(APIView):
 
     permission_classes = (IsAuthenticated,)
+
     def get_object(self, pk):
         try:
             return School.objects.get(pk=pk)
         except School.DoesNotExist:
             raise Http404
 
+    @swagger_auto_schema(
+        operation_summary="Gets the school for detailed view.",
+    )
     def get(self, request, pk, format=None):
         school = self.get_object(pk)
         serializer = SchoolDetailSerializer(school)
         return Response(serializer.data)
 
+
+    @swagger_auto_schema(
+        operation_summary="Edites the school.",
+    )
     def put(self, request, pk, format=None):
         school = self.get_object(pk)
         serializer = SchoolSerializer(school, data=request.data)
@@ -58,7 +71,9 @@ class SchoolDetailView(APIView):
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-
+    @swagger_auto_schema(
+        operation_summary="Deletes the school.",
+    )
     def delete(self, request, pk, format=None):
         school = self.get_object(pk)
         school.delete()

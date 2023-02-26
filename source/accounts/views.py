@@ -12,10 +12,14 @@ from accounts.serializers import UserRegistrationSerializer, UserLoginSerializer
 from django.contrib.sites.shortcuts import get_current_site
 from django.urls import reverse
 from django.conf import settings
+from drf_yasg.utils import swagger_auto_schema
 
 from accounts.utils import Util
 
 User = get_user_model()
+
+
+
 
 class UserRegistrationAPIView(GenericAPIView):
     """
@@ -25,6 +29,10 @@ class UserRegistrationAPIView(GenericAPIView):
     permission_classes = (AllowAny,)
     serializer_class = UserRegistrationSerializer
 
+    @swagger_auto_schema(
+        operation_summary="User Registration",
+        operation_description="Returns data consisting Tokens and additional information about the user"
+    )
     def post(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
@@ -51,6 +59,10 @@ class UserLoginAPIView(GenericAPIView):
     permission_classes = (AllowAny,)
     serializer_class = UserLoginSerializer
 
+    @swagger_auto_schema(
+        operation_summary="User Login",
+        operation_description="Returns a token"
+    )
     def post(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
@@ -68,6 +80,9 @@ class UserLogoutAPIView(GenericAPIView):
 
     permission_classes = (IsAuthenticated,)
 
+    @swagger_auto_schema(
+        operation_summary="User Logout",
+    )
     def post(self, request, *args, **kwargs):
         try:
             refresh_token = request.data["refresh"]
@@ -76,6 +91,7 @@ class UserLogoutAPIView(GenericAPIView):
             return Response(status=status.HTTP_205_RESET_CONTENT)
         except Exception as e:
             return Response(status=status.HTTP_400_BAD_REQUEST)
+
 
 class UserAPIView(RetrieveUpdateAPIView):
     """
@@ -113,6 +129,10 @@ class UserAvatarAPIView(RetrieveUpdateAPIView):
         return self.request.user.profile
 
 class VerifyEmail(GenericAPIView):
+
+    @swagger_auto_schema(
+        operation_summary="User Verification by email",
+    )
     def get(self, request):
         token = request.GET.get('token')
         try:
