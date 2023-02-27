@@ -79,6 +79,7 @@ class UserLogoutAPIView(GenericAPIView):
     """
 
     permission_classes = (IsAuthenticated,)
+    serializer_class = CustomUserSerializer
 
     @swagger_auto_schema(
         operation_summary="User Logout",
@@ -129,6 +130,7 @@ class UserAvatarAPIView(RetrieveUpdateAPIView):
         return self.request.user.profile
 
 class VerifyEmail(GenericAPIView):
+    serializer_class = CustomUserSerializer
 
     @swagger_auto_schema(
         operation_summary="User Verification by email"
