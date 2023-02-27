@@ -151,8 +151,9 @@ MEDIA_URL = "media/"
 REST_FRAMEWORK = {
     'NON_FIELD_ERRORS_KEY': 'error',
     'DEFAULT_AUTHENTICATION_CLASSES':
-    ('rest_framework_simplejwt.authentication.JWTAuthentication',
-    )
+    [
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ]
 }
 
 

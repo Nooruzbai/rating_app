@@ -1,5 +1,5 @@
 from drf_yasg.utils import swagger_auto_schema
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
@@ -10,11 +10,12 @@ from school_rating.serializers.school_serializers import SchoolSerializer, Schoo
 
 
 class SchoolListView(APIView):
+    permission_classes = [IsAuthenticatedOrReadOnly,]
 
     @swagger_auto_schema(
         operation_summary="Gets and lists all the schools.",
     )
-    def get(self, request, format=None):
+    def get(self, request, *args, **kwargs):
         schools = School.objects.all()
         serializer = SchoolSerializer(schools, many=True)
         return Response(serializer.data)
@@ -22,7 +23,7 @@ class SchoolListView(APIView):
     @swagger_auto_schema(
         operation_summary="Creates a new school.",
     )
-    def post(self, request, format=None):
+    def post(self, request,  *args, **kwargs):
         serializer = SchoolSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
@@ -32,8 +33,7 @@ class SchoolListView(APIView):
 
 
 class SchoolDetailView(APIView):
-
-    permission_classes = (IsAuthenticated,)
+    permission_classes = [IsAuthenticatedOrReadOnly, ]
 
     def get_object(self, pk):
         try:
@@ -44,16 +44,16 @@ class SchoolDetailView(APIView):
     @swagger_auto_schema(
         operation_summary="Gets the school for detailed view.",
     )
-    def get(self, request, pk, format=None):
+    def get(self, request, pk, *args, **kwargs):
         school = self.get_object(pk)
         serializer = SchoolDetailSerializer(school)
         return Response(serializer.data)
 
 
     @swagger_auto_schema(
-        operation_summary="Edites the school.",
+        operation_summary="Edits the school.",
     )
-    def put(self, request, pk, format=None):
+    def put(self, request, pk, *args, **kwargs):
         school = self.get_object(pk)
         serializer = SchoolSerializer(school, data=request.data)
         if serializer.is_valid():
@@ -61,7 +61,7 @@ class SchoolDetailView(APIView):
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-    def patch(self, request, pk, format=None):
+    def patch(self, request, pk):
         school = self.get_object(pk)
         serializer = SchoolSerializer(school,
                                            data=request.data,
@@ -74,7 +74,7 @@ class SchoolDetailView(APIView):
     @swagger_auto_schema(
         operation_summary="Deletes the school.",
     )
-    def delete(self, request, pk, format=None):
+    def delete(self, request, pk, *args, **kwargs):
         school = self.get_object(pk)
         school.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)

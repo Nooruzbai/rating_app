@@ -131,9 +131,9 @@ class UserAvatarAPIView(RetrieveUpdateAPIView):
 class VerifyEmail(GenericAPIView):
 
     @swagger_auto_schema(
-        operation_summary="User Verification by email",
+        operation_summary="User Verification by email"
     )
-    def get(self, request):
+    def get(self, request, args, **kwargs):
         token = request.GET.get('token')
         try:
             payload = jwt.decode(token, settings.SECRET_KEY, algorithms=["HS256"])

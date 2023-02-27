@@ -1,4 +1,5 @@
 from drf_yasg.utils import swagger_auto_schema
+from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
@@ -9,11 +10,12 @@ from school_rating.serializers.rating_serializers import RatingSerializer, Ratin
 
 
 class RatingListView(APIView):
+    permission_classes = [IsAuthenticatedOrReadOnly,]
 
     @swagger_auto_schema(
         operation_summary="Gets and lists all the ratings.",
     )
-    def get(self, request,  args, **kwargs):
+    def get(self, request,  *args, **kwargs):
         ratings = Rating.objects.all()
         serializer = RatingSerializer(ratings, many=True)
         return Response(serializer.data)
@@ -21,7 +23,7 @@ class RatingListView(APIView):
     @swagger_auto_schema(
         operation_summary="Creates a rating",
     )
-    def post(self, request, args, **kwargs):
+    def post(self, request, *args, **kwargs):
         serializer = RatingSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
@@ -31,6 +33,7 @@ class RatingListView(APIView):
 
 
 class RatingDetailView(APIView):
+    permission_classes = [IsAuthenticatedOrReadOnly,]
 
     def get_object(self, pk):
         try:
@@ -41,7 +44,7 @@ class RatingDetailView(APIView):
     @swagger_auto_schema(
         operation_summary="Gets the rating for detailed view",
     )
-    def get(self, request, pk, format=None):
+    def get(self, request, pk, *args, **kwargs):
         rating = self.get_object(pk)
         serializer = RatingDetailSerializer(rating)
         return Response(serializer.data)
@@ -50,7 +53,7 @@ class RatingDetailView(APIView):
     @swagger_auto_schema(
         operation_summary="Edits the rating",
     )
-    def put(self, request, pk, format=None):
+    def put(self, request, pk, *args, **kwargs):
         school = self.get_object(pk)
         serializer = RatingSerializer(school, data=request.data)
         if serializer.is_valid():
@@ -58,7 +61,7 @@ class RatingDetailView(APIView):
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-    def patch(self, request, pk, format=None):
+    def patch(self, request, pk):
         school = self.get_object(pk)
         serializer = RatingSerializer(school,
                                            data=request.data,
@@ -71,7 +74,7 @@ class RatingDetailView(APIView):
     @swagger_auto_schema(
         operation_summary="Deletes the rating",
     )
-    def delete(self, request, pk, format=None):
+    def delete(self, request, pk, *args, **kwargs):
         school = self.get_object(pk)
         school.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
