@@ -9,6 +9,7 @@ from school_rating.models import School
 from school_rating.serializers.school_serializers import SchoolSerializer, SchoolDetailSerializer
 
 
+
 class SchoolListView(APIView):
     permission_classes = [IsAuthenticatedOrReadOnly,]
 

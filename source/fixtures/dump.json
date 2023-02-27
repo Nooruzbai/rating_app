@@ -1,0 +1,196 @@
+[
+{
+  "model": "school_rating.school",
+  "pk": 1,
+  "fields": {
+    "name": "#71",
+    "description": "One of the Best Schools in Oktober district",
+    "type": "unknown",
+    "address": {
+      "City": "Bishkek"
+    },
+    "setting": "City",
+    "webpage": "http://70.kg"
+  }
+},
+{
+  "model": "school_rating.school",
+  "pk": 2,
+  "fields": {
+    "name": "Bilimkana-Bishkek",
+    "description": "On of the best schools in Bishkek",
+    "type": "private",
+    "address": {
+      "City": "Bishkek"
+    },
+    "setting": "City",
+    "webpage": "http://bilimkana.kg/"
+  }
+},
+{
+  "model": "school_rating.school",
+  "pk": 3,
+  "fields": {
+    "name": "Bilimkana-American",
+    "description": "One of the Best Schools",
+    "type": "private",
+    "address": {
+      "City": "Bishkek"
+    },
+    "setting": "City",
+    "webpage": "http://bilimkana.american.kg"
+  }
+},
+{
+  "model": "school_rating.rating",
+  "pk": 1,
+  "fields": {
+    "name": "The Best School",
+    "date_created": "2023-02-27T06:33:27.181Z"
+  }
+},
+{
+  "model": "school_rating.rating",
+  "pk": 2,
+  "fields": {
+    "name": "The Best Perfomance School",
+    "date_created": "2023-02-27T06:33:36.816Z"
+  }
+},
+{
+  "model": "school_rating.rating",
+  "pk": 3,
+  "fields": {
+    "name": "The Best Math School",
+    "date_created": "2023-02-27T06:33:58.954Z"
+  }
+},
+{
+  "model": "school_rating.rating",
+  "pk": 4,
+  "fields": {
+    "name": "The Best English School",
+    "date_created": "2023-02-27T06:34:07.585Z"
+  }
+},
+{
+  "model": "school_rating.schoolrating",
+  "pk": 1,
+  "fields": {
+    "school": 1,
+    "rating": 1,
+    "score": 100,
+    "date_created": "2023-02-27T06:36:47.613Z"
+  }
+},
+{
+  "model": "school_rating.schoolrating",
+  "pk": 2,
+  "fields": {
+    "school": 2,
+    "rating": 1,
+    "score": 88,
+    "date_created": "2023-02-27T06:36:55.915Z"
+  }
+},
+{
+  "model": "school_rating.schoolrating",
+  "pk": 3,
+  "fields": {
+    "school": 3,
+    "rating": 1,
+    "score": 56,
+    "date_created": "2023-02-27T06:37:02.971Z"
+  }
+},
+{
+  "model": "school_rating.schoolrating",
+  "pk": 4,
+  "fields": {
+    "school": 3,
+    "rating": 2,
+    "score": 23,
+    "date_created": "2023-02-27T06:37:30.960Z"
+  }
+},
+{
+  "model": "school_rating.schoolrating",
+  "pk": 6,
+  "fields": {
+    "school": 2,
+    "rating": 2,
+    "score": 34,
+    "date_created": "2023-02-27T06:37:44.561Z"
+  }
+},
+{
+  "model": "school_rating.schoolrating",
+  "pk": 7,
+  "fields": {
+    "school": 1,
+    "rating": 3,
+    "score": 67,
+    "date_created": "2023-02-27T06:37:54.050Z"
+  }
+},
+{
+  "model": "school_rating.schoolrating",
+  "pk": 9,
+  "fields": {
+    "school": 2,
+    "rating": 3,
+    "score": 43,
+    "date_created": "2023-02-27T06:38:09.324Z"
+  }
+},
+{
+  "model": "school_rating.schoolrating",
+  "pk": 10,
+  "fields": {
+    "school": 3,
+    "rating": 3,
+    "score": 34,
+    "date_created": "2023-02-27T06:38:16.380Z"
+  }
+},
+{
+  "model": "school_rating.schoolrating",
+  "pk": 11,
+  "fields": {
+    "school": 1,
+    "rating": 2,
+    "score": 45,
+    "date_created": "2023-02-27T06:39:42.101Z"
+  }
+},
+{
+  "model": "school_rating.schoolrating",
+  "pk": 12,
+  "fields": {
+    "school": 1,
+    "rating": 4,
+    "score": 23,
+    "date_created": "2023-02-27T06:40:12.678Z"
+  }
+},
+{
+  "model": "school_rating.schoolrating",
+  "pk": 13,
+  "fields": {
+    "school": 2,
+    "rating": 4,
+    "score": 78,
+    "date_created": "2023-02-27T06:40:19.693Z"
+  }
+},
+{
+  "model": "school_rating.schoolrating",
+  "pk": 14,
+  "fields": {
+    "school": 3,
+    "rating": 4,
+    "score": 98,
+    "date_created": "2023-02-27T06:40:27.419Z"
+  }
+}
+]

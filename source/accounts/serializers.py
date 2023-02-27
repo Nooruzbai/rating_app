@@ -1,7 +1,10 @@
-from django.contrib.auth import authenticate
+from django.contrib.auth import authenticate, get_user_model
 from rest_framework import serializers
 
 from .models import CustomUser, Profile
+
+User = get_user_model()
+
 
 
 class CustomUserSerializer(serializers.ModelSerializer):
@@ -11,8 +14,7 @@ class CustomUserSerializer(serializers.ModelSerializer):
     """
     bio = serializers.CharField(source='profile.bio')
     class Meta:
-        model = CustomUser
-
+        model = User
         fields = ("id", "username", "email",'password','first_name', 'last_name', 'bio')
 
 
@@ -24,7 +26,7 @@ class UserRegistrationSerializer(serializers.ModelSerializer):
     first_name = serializers.CharField(max_length=100, allow_null=False, allow_blank=False, error_messages={"requierd": "User must have a first name"})
     last_name = serializers.CharField(max_length=100, allow_blank=False, allow_null=False, error_messages={"requierd":"User must have a last name"})
     class Meta:
-        model = CustomUser
+        model = User
         fields = ('id', 'username', 'first_name', 'last_name', 'email', 'password', 'confirm_password')
         extra_kwargs = {'password': {'write_only': True},
                         }
