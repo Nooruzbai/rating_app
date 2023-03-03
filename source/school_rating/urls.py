@@ -1,6 +1,6 @@
 from django.urls import path
 
-from school_rating.views.comment_views import CommentView
+from school_rating.views.comment_views import CommentView, CommentDetailView
 from school_rating.views.rating_views import RatingListView, RatingDetailView
 from school_rating.views.school_views import SchoolListView, SchoolDetailView
 
@@ -12,5 +12,6 @@ urlpatterns = [
     path('school/<int:pk>', SchoolDetailView.as_view(), name='school_detail_view'),
     path('ratings', RatingListView.as_view(), name="rating_list_view"),
     path('rating/<int:pk>', RatingDetailView.as_view(), name="rating_detail_view"),
-    path('comment/', CommentView.as_view(), name='comment_view')
+    path('comment/', CommentView.as_view(), name='comment_view'),
+    path('comment/<int:pk>', CommentDetailView.as_view(), name='comment_detail_view')
 ]

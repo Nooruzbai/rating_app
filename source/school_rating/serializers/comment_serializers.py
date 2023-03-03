@@ -6,4 +6,6 @@ from school_rating.models import Comment
 class CommentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Comment
-        fields = ['id', 'user', 'school', 'text']
+        fields = ['id', 'user', 'school', 'text', 'date_created']
+
+
