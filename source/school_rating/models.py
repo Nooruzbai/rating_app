@@ -33,8 +33,6 @@ class Rating(models.Model):
     name = models.CharField(max_length=100, null=False, blank=False, verbose_name='Name')
     date_created = models.DateTimeField(auto_now_add=True, null=False, blank=False, verbose_name='Datetime')
 
-
-
     def __str__(self):
         return f'{self.pk}. {self.name}'
 
@@ -53,9 +51,23 @@ class SchoolRating(models.Model):
     date_created = models.DateTimeField(auto_now_add=True, verbose_name='Date Created')
 
     def __str__(self):
-        return f'{self.pk}. {self.school}, {self.rating}'
+        return f'{self.pk}. {self.school}, {self.rating}, {self.date_created}'
 
     class Meta:
         db_table = 'school_rating'
         verbose_name = 'School Rating'
         verbose_name_plural = 'School Ratings'
+
+
+class Comment(models.Model):
+    text = models.TextField(max_length=500, null=True, blank=True, verbose_name='Text')
+    user = models.ForeignKey(User, related_name='comments', on_delete=models.CASCADE, verbose_name='User')
+    school = models.ForeignKey('school_rating.School', on_delete=models.CASCADE, related_name='comments', verbose_name='School')
+    date_created = models.DateTimeField(auto_now_add=True, verbose_name='Date Created')
+
+    def __str__(self):
+        return f'{self.pk}. {self.user}, {self.school}, {self.text}'
+    class Meta:
+        db_table = 'comment'
+        verbose_name = 'Comment'
+        verbose_name_plural = 'Comments'
