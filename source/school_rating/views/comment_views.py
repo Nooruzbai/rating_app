@@ -10,7 +10,7 @@ from school_rating.serializers.comment_serializers import CommentSerializer
 
 
 class CommentView(APIView):
-    # permission_classes = [IsAuthenticatedOrReadOnly, ]
+    permission_classes = [IsAuthenticatedOrReadOnly, ]
 
     @swagger_auto_schema(
         operation_summary="Adds a comment",
@@ -26,7 +26,7 @@ class CommentView(APIView):
 
 
 class CommentDetailView(APIView):
-    # permission_classes = [IsAuthenticatedOrReadOnly, ]
+    permission_classes = [IsAuthenticatedOrReadOnly, ]
 
     def get_object(self, pk):
         try:
