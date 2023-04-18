@@ -71,3 +71,20 @@ class Comment(models.Model):
         db_table = 'comment'
         verbose_name = 'Comment'
         verbose_name_plural = 'Comments'
+
+
+class CommentLike(models.Model):
+    user = models.ForeignKey(User, related_name='likes', on_delete=models.CASCADE, verbose_name='User')
+    comment = models.ForeignKey('school_rating.Comment', on_delete=models.CASCADE, verbose_name='comment')
+    date_created = models.DateTimeField(auto_now_add=True, verbose_name='Date Created')
+
+
+    def __str__(self):
+        return f'{self.pk}. {self.user}, {self.comment}'
+
+    class Meta:
+        unique_together = ["user", "comment"]
+        db_table = 'like'
+        verbose_name = 'Like'
+        verbose_name_plural = 'Likes'
+
