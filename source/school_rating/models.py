@@ -27,8 +27,6 @@ class School(models.Model):
         verbose_name_plural = 'Schools'
 
 
-
-
 class Rating(models.Model):
     name = models.CharField(max_length=100, null=False, blank=False, verbose_name='Name')
     date_created = models.DateTimeField(auto_now_add=True, null=False, blank=False, verbose_name='Datetime')
@@ -43,15 +41,15 @@ class Rating(models.Model):
 
 
 class SchoolRating(models.Model):
-    school = models.ForeignKey('school_rating.School', on_delete=models.CASCADE,
+    school_id = models.ForeignKey('school_rating.School', on_delete=models.CASCADE,
                                related_name='school_ratings', verbose_name='School Rating')
-    rating = models.ForeignKey('school_rating.Rating', on_delete=models.CASCADE,
+    rating_id = models.ForeignKey('school_rating.Rating', on_delete=models.CASCADE,
                                related_name='rating_schools', verbose_name='School Rating')
     score = models.IntegerField(null=True, blank=True, verbose_name='Score')
     date_created = models.DateTimeField(auto_now_add=True, verbose_name='Date Created')
 
     def __str__(self):
-        return f'{self.pk}. {self.school}, {self.rating}, {self.date_created}'
+        return f'{self.pk}. {self.school_id}, {self.rating_id}, {self.date_created}'
 
     class Meta:
         db_table = 'school_rating'
@@ -61,12 +59,12 @@ class SchoolRating(models.Model):
 
 class Comment(models.Model):
     text = models.TextField(max_length=500, null=True, blank=True, verbose_name='Text')
-    user = models.ForeignKey(User, related_name='comments', on_delete=models.CASCADE, verbose_name='User')
-    school = models.ForeignKey('school_rating.School', on_delete=models.CASCADE, related_name='comments', verbose_name='School')
+    user_id = models.ForeignKey(User, related_name='comments', on_delete=models.CASCADE, verbose_name='User')
+    school_id = models.ForeignKey('school_rating.School', on_delete=models.CASCADE, related_name='comments', verbose_name='School')
     date_created = models.DateTimeField(auto_now_add=True, verbose_name='Date Created')
 
     def __str__(self):
-        return f'{self.pk}. {self.user}, {self.school}, {self.text}'
+        return f'{self.pk}. {self.user_id}, {self.school_id}, {self.text}'
     class Meta:
         db_table = 'comment'
         verbose_name = 'Comment'
@@ -74,16 +72,15 @@ class Comment(models.Model):
 
 
 class CommentLike(models.Model):
-    user = models.ForeignKey(User, related_name='likes', on_delete=models.CASCADE, verbose_name='User')
-    comment = models.ForeignKey('school_rating.Comment', on_delete=models.CASCADE, verbose_name='comment')
+    user_id = models.ForeignKey(User, related_name='likes', on_delete=models.CASCADE, verbose_name='User')
+    comment_id = models.ForeignKey('school_rating.Comment', on_delete=models.CASCADE, verbose_name='comment')
     date_created = models.DateTimeField(auto_now_add=True, verbose_name='Date Created')
 
-
     def __str__(self):
-        return f'{self.pk}. {self.user}, {self.comment}'
+        return f'{self.pk}. {self.user_id}, {self.comment_id}'
 
     class Meta:
-        unique_together = ["user", "comment"]
+        unique_together = ["user_id", "comment_id"]
         db_table = 'like'
         verbose_name = 'Like'
         verbose_name_plural = 'Likes'

@@ -1,8 +1,5 @@
 from django.contrib import admin
-from school_rating.models import School, Rating, SchoolRating, CommentLike, Comment
-
-
-# Register your models here.
+from school_rating.models import School, Rating, SchoolRating, Comment, CommentLike
 
 
 class SchoolAdmin(admin.ModelAdmin):
@@ -14,15 +11,15 @@ class RatingAdmin(admin.ModelAdmin):
 
 
 class SchoolRatingAdmin(admin.ModelAdmin):
-    list_display = ['id', 'school', 'rating', 'score', 'date_created']
+    list_display = ['id', 'school_id', 'rating_id', 'score', 'date_created']
 
 
 class CommentLikeAdmin(admin.ModelAdmin):
-    list_display = ['id', 'user', 'comment']
+    list_display = ['id', 'user_id', 'comment_id']
 
 
 class CommentAdmin(admin.ModelAdmin):
-    list_display = ['id', 'user', 'school', 'date_created']
+    list_display = ['id', 'user_id', 'school_id', 'date_created']
 
 
 admin.site.register(School, SchoolAdmin)

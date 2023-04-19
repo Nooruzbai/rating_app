@@ -2,6 +2,7 @@ from django.urls import path
 
 from school_rating.views.comment_views import CommentDetailView, CommentListView, CommentDeleteView, \
     CommentUpdateView, CommentCreateView
+from school_rating.views.comment_like_views import CreateCommentLike
 from school_rating.views.rating_views import RatingListView, RatingDetailView
 from school_rating.views.school_views import SchoolListView, SchoolDetailView, SchoolCreateView, SchoolDeleteView, \
     SchoolUpdateView
@@ -26,4 +27,6 @@ urlpatterns = [
     path('comment/detail/<int:pk>/', CommentDetailView.as_view(), name='comment_detail_view'),
     path('comment/delete/<int:pk>/', CommentDeleteView.as_view(), name = 'comment_delete_view'),
     path('comment/update/<int:pk>', CommentUpdateView.as_view(), name='comment_update_view'),
+
+    path('like/comment/', CreateCommentLike.as_view(), name='like_comment_view')
 ]
