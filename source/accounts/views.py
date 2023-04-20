@@ -19,8 +19,6 @@ from accounts.utils import Util
 User = get_user_model()
 
 
-
-
 class UserRegistrationAPIView(GenericAPIView):
     """
     An endpoint for the client to create a new User.
@@ -73,6 +71,7 @@ class UserLoginAPIView(GenericAPIView):
         data["tokens"] = {"refresh": str(token), "access": str(token.access_token)}
         return Response(data, status=status.HTTP_200_OK)
 
+
 class UserLogoutAPIView(GenericAPIView):
     """
     An endpoint to logout users.
@@ -94,40 +93,41 @@ class UserLogoutAPIView(GenericAPIView):
             return Response(status=status.HTTP_400_BAD_REQUEST)
 
 
-class UserAPIView(RetrieveUpdateAPIView):
-    """
-    Get, Update user information
-    """
+# class UserAPIView(RetrieveUpdateAPIView):
+#     """
+#     Get, Update user information
+#     """
+#
+#     permission_classes = (IsAuthenticated,)
+#     serializer_class = CustomUserSerializer
+#
+#     def get_object(self):
+#         return self.request.user
 
-    permission_classes = (IsAuthenticated,)
-    serializer_class = CustomUserSerializer
 
-    def get_object(self):
-        return self.request.user
-
-class UserProfileAPIView(RetrieveUpdateAPIView):
-    """
-    Get, Update user profile
-    """
-
-    queryset = Profile.objects.all()
-    serializer_class = ProfileSerializer
-    permission_classes = (IsAuthenticated,)
-
-    def get_object(self):
-        return self.request.user.profile
-
-class UserAvatarAPIView(RetrieveUpdateAPIView):
-    """
-    Get, Update user avatar
-    """
-
-    queryset = Profile.objects.all()
-    serializer_class = ProfileAvatarSerializer
-    permission_classes = (IsAuthenticated,)
-
-    def get_object(self):
-        return self.request.user.profile
+# class UserProfileAPIView(RetrieveUpdateAPIView):
+#     """
+#     Get, Update user profile
+#     """
+#
+#     queryset = Profile.objects.all()
+#     serializer_class = ProfileSerializer
+#     permission_classes = (IsAuthenticated,)
+#
+#     def get_object(self):
+#         return self.request.user.profile
+#
+# class UserAvatarAPIView(RetrieveUpdateAPIView):
+#     """
+#     Get, Update user avatar
+#     """
+#
+#     queryset = Profile.objects.all()
+#     serializer_class = ProfileAvatarSerializer
+#     permission_classes = (IsAuthenticated,)
+#
+#     def get_object(self):
+#         return self.request.user.profile
 
 class VerifyEmail(GenericAPIView):
     serializer_class = CustomUserSerializer
@@ -135,7 +135,7 @@ class VerifyEmail(GenericAPIView):
     @swagger_auto_schema(
         operation_summary="User Verification by email"
     )
-    def get(self, request, args, **kwargs):
+    def get(self, request, *args, **kwargs):
         token = request.GET.get('token')
         try:
             payload = jwt.decode(token, settings.SECRET_KEY, algorithms=["HS256"])

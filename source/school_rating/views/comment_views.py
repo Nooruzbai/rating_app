@@ -19,7 +19,8 @@ class CommentCreateView(CreateAPIView):
     queryset = Comment.objects.all()
 
     def perform_create(self, serializer):
-        serializer.save(user=self.request.user)
+
+        serializer.save(user_id=self.request.user)
 
 
 class CommentDetailView(RetrieveAPIView):
