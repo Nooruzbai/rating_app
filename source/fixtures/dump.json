@@ -1,0 +1,296 @@
+[
+{
+    "model": "school_rating.school",
+    "pk": 1,
+    "fields": {
+        "name": "Bilimkana-Bishkek",
+        "description": "The Best School",
+        "type": "private",
+        "address": {
+            "city": "Bishkek"
+        },
+        "setting": "City",
+        "webpage": "http://bilimkana.kg/"
+    }
+},
+{
+    "model": "school_rating.school",
+    "pk": 2,
+    "fields": {
+        "name": "School #71",
+        "description": "The second best school!",
+        "type": "public",
+        "address": {
+            "city": "Bishkek"
+        },
+        "setting": "City",
+        "webpage": "http://71.com"
+    }
+},
+{
+    "model": "school_rating.school",
+    "pk": 3,
+    "fields": {
+        "name": "#64",
+        "description": "One of the best",
+        "type": "public",
+        "address": {
+            "city": "Bishkek"
+        },
+        "setting": "City",
+        "webpage": "http://64.kg"
+    }
+},
+{
+    "model": "school_rating.school",
+    "pk": 4,
+    "fields": {
+        "name": "#70",
+        "description": "One of the best",
+        "type": "public",
+        "address": {
+            "city": "Bishkek"
+        },
+        "setting": "City",
+        "webpage": "http://70.com"
+    }
+},
+{
+    "model": "school_rating.school",
+    "pk": 5,
+    "fields": {
+        "name": "BIS",
+        "description": "European School",
+        "type": "private",
+        "address": {
+            "city": "Bishkek"
+        },
+        "setting": "City",
+        "webpage": "http://bis.kg/"
+    }
+},
+{
+    "model": "school_rating.rating",
+    "pk": 1,
+    "fields": {
+        "name": "ORT",
+        "date_created": "2023-04-20T08:04:43.112Z"
+    }
+},
+{
+    "model": "school_rating.rating",
+    "pk": 2,
+    "fields": {
+        "name": "Best English Language School",
+        "date_created": "2023-04-20T08:05:13.899Z"
+    }
+},
+{
+    "model": "school_rating.rating",
+    "pk": 3,
+    "fields": {
+        "name": "Best European School",
+        "date_created": "2023-04-20T08:05:26.319Z"
+    }
+},
+{
+    "model": "school_rating.rating",
+    "pk": 4,
+    "fields": {
+        "name": "Best Math School",
+        "date_created": "2023-04-20T08:05:38.647Z"
+    }
+},
+{
+    "model": "school_rating.rating",
+    "pk": 5,
+    "fields": {
+        "name": "Best Chemistry School",
+        "date_created": "2023-04-20T08:05:53.452Z"
+    }
+},
+{
+    "model": "school_rating.rating",
+    "pk": 6,
+    "fields": {
+        "name": "Best Chinese School",
+        "date_created": "2023-04-20T08:06:08.830Z"
+    }
+},
+{
+    "model": "school_rating.schoolrating",
+    "pk": 1,
+    "fields": {
+        "school": 1,
+        "rating": 1,
+        "score": 12,
+        "date_created": "2023-04-20T08:06:19.870Z"
+    }
+},
+{
+    "model": "school_rating.schoolrating",
+    "pk": 2,
+    "fields": {
+        "school": 1,
+        "rating": 2,
+        "score": 12,
+        "date_created": "2023-04-20T08:06:27.577Z"
+    }
+},
+{
+    "model": "school_rating.schoolrating",
+    "pk": 3,
+    "fields": {
+        "school": 3,
+        "rating": 3,
+        "score": 143,
+        "date_created": "2023-04-20T08:06:37.368Z"
+    }
+},
+{
+    "model": "school_rating.schoolrating",
+    "pk": 4,
+    "fields": {
+        "school": 4,
+        "rating": 2,
+        "score": 2342,
+        "date_created": "2023-04-20T08:06:46.147Z"
+    }
+},
+{
+    "model": "school_rating.schoolrating",
+    "pk": 5,
+    "fields": {
+        "school": 3,
+        "rating": 4,
+        "score": 2342342,
+        "date_created": "2023-04-20T08:06:54.239Z"
+    }
+},
+{
+    "model": "school_rating.schoolrating",
+    "pk": 6,
+    "fields": {
+        "school": 2,
+        "rating": 3,
+        "score": 234,
+        "date_created": "2023-04-20T08:07:02.172Z"
+    }
+},
+{
+    "model": "school_rating.schoolrating",
+    "pk": 7,
+    "fields": {
+        "school": 3,
+        "rating": 2,
+        "score": 54,
+        "date_created": "2023-04-20T08:07:14.272Z"
+    }
+},
+{
+    "model": "school_rating.schoolrating",
+    "pk": 8,
+    "fields": {
+        "school": 5,
+        "rating": 3,
+        "score": 2342,
+        "date_created": "2023-04-20T08:07:27.303Z"
+    }
+},
+{
+    "model": "school_rating.schoolrating",
+    "pk": 9,
+    "fields": {
+        "school": 2,
+        "rating": 3,
+        "score": 43,
+        "date_created": "2023-04-20T08:07:34.447Z"
+    }
+},
+{
+    "model": "school_rating.schoolrating",
+    "pk": 10,
+    "fields": {
+        "school": 1,
+        "rating": 4,
+        "score": 343,
+        "date_created": "2023-04-20T08:07:45.412Z"
+    }
+},
+{
+    "model": "school_rating.comment",
+    "pk": 1,
+    "fields": {
+        "text": "gagdsfgdsf",
+        "user": 1,
+        "school": 3,
+        "date_created": "2023-04-20T08:08:00.896Z"
+    }
+},
+{
+    "model": "school_rating.comment",
+    "pk": 2,
+    "fields": {
+        "text": "dfgsdfgdsfgsdfgds",
+        "user": 1,
+        "school": 5,
+        "date_created": "2023-04-20T08:08:10.112Z"
+    }
+},
+{
+    "model": "school_rating.comment",
+    "pk": 3,
+    "fields": {
+        "text": "sdfgwer qwerg",
+        "user": 1,
+        "school": 3,
+        "date_created": "2023-04-20T08:08:18.906Z"
+    }
+},
+{
+    "model": "school_rating.comment",
+    "pk": 4,
+    "fields": {
+        "text": "wr tqrwqt er",
+        "user": 1,
+        "school": 4,
+        "date_created": "2023-04-20T08:08:27.548Z"
+    }
+},
+{
+    "model": "school_rating.commentlike",
+    "pk": 8,
+    "fields": {
+        "user": 1,
+        "comment": 2,
+        "date_created": "2023-04-20T09:43:43.606Z"
+    }
+},
+{
+    "model": "school_rating.commentlike",
+    "pk": 10,
+    "fields": {
+        "user": 1,
+        "comment": 1,
+        "date_created": "2023-04-21T09:49:06.507Z"
+    }
+},
+{
+    "model": "school_rating.commentlike",
+    "pk": 12,
+    "fields": {
+        "user": 1,
+        "comment": 3,
+        "date_created": "2023-04-21T09:49:30.879Z"
+    }
+},
+{
+    "model": "school_rating.commentlike",
+    "pk": 19,
+    "fields": {
+        "user": 2,
+        "comment": 1,
+        "date_created": "2023-04-21T12:10:53.271Z"
+    }
+}
+]
