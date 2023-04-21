@@ -17,7 +17,7 @@ class RatingSchoolSerializer(serializers.ModelSerializer):
 
 
 class RatingDetailSerializer(serializers.ModelSerializer):
-    schools = RatingSchoolSerializer(source='rating_schools', many=True, read_only=True)
+    schools = RatingSchoolSerializer(many=True, read_only=True)
     class Meta:
         model = Rating
         fields = ['name', 'date_created', 'schools']
