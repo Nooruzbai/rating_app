@@ -84,4 +84,5 @@ class CommentLike(models.Model):
         db_table = 'like'
         verbose_name = 'Like'
         verbose_name_plural = 'Likes'
+        unique_together = ['user', 'comment']
 
