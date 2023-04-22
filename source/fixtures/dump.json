@@ -258,21 +258,33 @@
     }
 },
 {
-    "model": "school_rating.commentlike",
-    "pk": 8,
+    "model": "school_rating.comment",
+    "pk": 5,
     "fields": {
-        "user": 1,
-        "comment": 2,
-        "date_created": "2023-04-20T09:43:43.606Z"
+        "text": "string",
+        "user": 2,
+        "school": 1,
+        "date_created": "2023-04-22T09:09:47.263Z"
     }
 },
 {
-    "model": "school_rating.commentlike",
-    "pk": 10,
+    "model": "school_rating.comment",
+    "pk": 6,
     "fields": {
+        "text": "string2",
+        "user": 2,
+        "school": 2,
+        "date_created": "2023-04-22T09:10:44.224Z"
+    }
+},
+{
+    "model": "school_rating.comment",
+    "pk": 7,
+    "fields": {
+        "text": "sddfgdfgdfgdfgdfgdfgdf",
         "user": 1,
-        "comment": 1,
-        "date_created": "2023-04-21T09:49:06.507Z"
+        "school": 1,
+        "date_created": "2023-04-22T09:18:03.389Z"
     }
 },
 {
@@ -286,11 +298,38 @@
 },
 {
     "model": "school_rating.commentlike",
-    "pk": 19,
+    "pk": 44,
+    "fields": {
+        "user": 1,
+        "comment": 1,
+        "date_created": "2023-04-22T08:02:13.963Z"
+    }
+},
+{
+    "model": "school_rating.commentlike",
+    "pk": 45,
+    "fields": {
+        "user": 1,
+        "comment": 2,
+        "date_created": "2023-04-22T08:02:22.312Z"
+    }
+},
+{
+    "model": "school_rating.commentlike",
+    "pk": 46,
     "fields": {
         "user": 2,
-        "comment": 1,
-        "date_created": "2023-04-21T12:10:53.271Z"
+        "comment": 2,
+        "date_created": "2023-04-22T08:53:08.937Z"
+    }
+},
+{
+    "model": "school_rating.commentlike",
+    "pk": 47,
+    "fields": {
+        "user": 1,
+        "comment": 4,
+        "date_created": "2023-04-22T09:35:20.269Z"
     }
 }
 ]
