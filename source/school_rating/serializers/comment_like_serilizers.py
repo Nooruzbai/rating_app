@@ -9,13 +9,6 @@ class CommentLikeSerializer(serializers.ModelSerializer):
         model = CommentLike
         fields = ['comment', 'date_created']
 
-    def create(self, validated_data):
-        try:
-            return super().create(validated_data)
-        except IntegrityError:
-            raise ValidationError("User has already liked the comment")
-
-
 class CommentDislikeSerializer(serializers.ModelSerializer):
     pass
 
