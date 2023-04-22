@@ -3,39 +3,38 @@ from rest_framework.generics import ListAPIView, RetrieveAPIView, DestroyAPIView
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
 
 from school_rating.models import Comment
-# from school_rating.models import Comment
-from school_rating.serializers.comment_serializers import CommentSerializer, CreateCommentSerializer
+from school_rating.serializers.comment_serializers import SchoolCommentSerializer, SchoolCommentCreateSerializer, \
+    SchoolCommentDetailSerializer
 
 
-class CommentListView(ListAPIView):
+class SchoolCommentListView(ListAPIView):
     permission_classes = [IsAuthenticatedOrReadOnly, ]
-    serializer_class = CommentSerializer
+    serializer_class = SchoolCommentSerializer
     queryset = Comment.objects.all()
 
 
-class CommentCreateView(CreateAPIView):
+class SchoolCommentCreateView(CreateAPIView):
     permission_classes = [IsAuthenticatedOrReadOnly, ]
-    serializer_class = CreateCommentSerializer
+    serializer_class = SchoolCommentCreateSerializer
     queryset = Comment.objects.all()
 
     def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
 
-        serializer.save(user_id=self.request.user)
 
-
-class CommentDetailView(RetrieveAPIView):
+class SchoolCommentDetailView(RetrieveAPIView):
     permission_classes = [IsAuthenticatedOrReadOnly, ]
-    serializer_class = CommentSerializer
+    serializer_class = SchoolCommentDetailSerializer
     queryset = Comment.objects.all()
 
 
-class CommentUpdateView(UpdateAPIView):
+class SchoolCommentUpdateView(UpdateAPIView):
     permission_classes = [IsAuthenticatedOrReadOnly, ]
-    serializer_class = CommentSerializer
+    serializer_class = SchoolCommentSerializer
     queryset = Comment.objects.all()
 
 
-class CommentDeleteView(DestroyAPIView):
+class SchoolCommentDeleteView(DestroyAPIView):
     permission_classes = [IsAuthenticatedOrReadOnly, ]
-    serializer_class = CommentSerializer
+    serializer_class = SchoolCommentSerializer
     queryset = Comment.objects.all()

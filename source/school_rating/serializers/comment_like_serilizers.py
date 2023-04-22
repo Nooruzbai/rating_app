@@ -4,7 +4,7 @@ from rest_framework.exceptions import ValidationError
 from school_rating.models import CommentLike
 
 
-class CommentLikeSerializer(serializers.ModelSerializer):
+class SchoolCommentLikeSerializer(serializers.ModelSerializer):
     class Meta:
         model = CommentLike
         fields = ['comment', 'date_created']

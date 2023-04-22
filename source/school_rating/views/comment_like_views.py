@@ -5,12 +5,12 @@ from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from rest_framework.response import Response
 
 from school_rating.models import CommentLike
-from school_rating.serializers.comment_like_serilizers import CommentLikeSerializer
+from school_rating.serializers.comment_like_serilizers import SchoolCommentLikeSerializer
 
 
-class CreateCommentLike(CreateAPIView):
+class CreateSchoolCommentLikeView(CreateAPIView):
     permission_classes = [IsAuthenticatedOrReadOnly, ]
-    serializer_class = CommentLikeSerializer
+    serializer_class = SchoolCommentLikeSerializer
 
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
