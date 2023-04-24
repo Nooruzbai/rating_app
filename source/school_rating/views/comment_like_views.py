@@ -15,10 +15,10 @@ class CreateSchoolCommentLikeView(CreateAPIView):
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
         if serializer.is_valid(raise_exception=True):
-            user = self.request.user
+            user_id = self.request.user
             comment_id = self.request.data.get('comment')
             try:
-                query = get_object_or_404(CommentLike, user_id=user, comment_id=comment_id)
+                query = get_object_or_404(CommentLike, user_id=user_id, comment_id=comment_id)
             except Http404:
                 serializer.save(user=self.request.user)
                 message = {"message": f"You liked the comment {comment_id}"}
