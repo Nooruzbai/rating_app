@@ -45,6 +45,8 @@ class UserRegistrationAPIView(GenericAPIView):
         email_body = 'Hi ' + user.username+' Use link below to verify your email\n'+absolute_url
         data = {"email_body": email_body, "to_email": user.email, "email_subject":"Verify your email",
                 "tokens": {"refresh_token": str(token), "refresh": str(token.access_token)}}
+
+        # Uncomment this function to send message with token to an email
         # Util.send_email(data)
         return Response(data, status=status.HTTP_201_CREATED)
 
@@ -105,18 +107,18 @@ class UserLogoutAPIView(GenericAPIView):
 #         return self.request.user
 
 
-# class UserProfileAPIView(RetrieveUpdateAPIView):
-#     """
-#     Get, Update user profile
-#     """
-#
-#     queryset = Profile.objects.all()
-#     serializer_class = ProfileSerializer
-#     permission_classes = (IsAuthenticated,)
-#
-#     def get_object(self):
-#         return self.request.user.profile
-#
+class UserProfileRetrieveUpdateAPIView(RetrieveUpdateAPIView):
+    """
+    Get, Update user profile
+    """
+
+    queryset = Profile.objects.all()
+    serializer_class = ProfileSerializer
+    permission_classes = (IsAuthenticated,)
+
+    def get_object(self):
+        return self.request.user.profile
+
 # class UserAvatarAPIView(RetrieveUpdateAPIView):
 #     """
 #     Get, Update user avatar

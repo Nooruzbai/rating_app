@@ -6,16 +6,15 @@ from .models import CustomUser, Profile
 User = get_user_model()
 
 
-
 class CustomUserSerializer(serializers.ModelSerializer):
     """
     Serializer class to serialize CustomUser model.
     
     """
-    bio = serializers.CharField(source='profile.bio')
+    # bio = serializers.CharField(source='profile.bio')
     class Meta:
         model = User
-        fields = ("id", "username", "email",'password','first_name', 'last_name', 'bio')
+        fields = ("id", "username", "email",'password','first_name', 'last_name',)
 
 
 class UserRegistrationSerializer(serializers.ModelSerializer):
@@ -43,6 +42,7 @@ class UserRegistrationSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         return CustomUser.objects.create_user(**validated_data)
 
+
 class UserLoginSerializer(serializers.Serializer):
     """
     Serializer class to authenticate users with email and password.
@@ -58,7 +58,6 @@ class UserLoginSerializer(serializers.Serializer):
         raise serializers.ValidationError("Incorrect Credentials")
 
 
-
 class ProfileSerializer(CustomUserSerializer):
     """
     Serializer class to serialize the user Profile model
@@ -67,6 +66,7 @@ class ProfileSerializer(CustomUserSerializer):
     class Meta:
         model = Profile
         fields = '__all__'
+
 
 class ProfileAvatarSerializer(serializers.ModelSerializer):
     """

@@ -5,14 +5,9 @@ from school_rating.serializers.comment_like_serilizers import SchoolCommentLikeS
 
 
 class SchoolCommentSerializer(serializers.ModelSerializer):
-    total_likes = serializers.SerializerMethodField('get_total_likes')
     class Meta:
         model = Comment
-        fields = ['id', 'user_id', 'school_id', 'text', 'date_created', 'total_likes']
-
-    def get_total_likes(self, obj):
-        query = Comment.objects.get(id=obj.id).comment_likes.filter(comment_id=obj.id).count()
-        return query
+        fields = ['id', 'user_id', 'school_id', 'text', 'date_created',]
 
 
 class SchoolCommentCreateSerializer(serializers.ModelSerializer):
