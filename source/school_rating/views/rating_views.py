@@ -1,3 +1,4 @@
+from django_filters.rest_framework import DjangoFilterBackend
 from drf_yasg.utils import swagger_auto_schema
 from rest_framework.generics import ListAPIView, RetrieveAPIView
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
@@ -9,6 +10,8 @@ class RatingListView(ListAPIView):
     permission_classes = [IsAuthenticatedOrReadOnly,]
     serializer_class = RatingSerializer
     queryset = Rating.objects.all()
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['name',]
 
 
 class RatingDetailView(RetrieveAPIView):
