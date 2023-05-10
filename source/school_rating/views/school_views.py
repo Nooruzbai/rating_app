@@ -11,7 +11,7 @@ class SchoolListView(ListAPIView):
     queryset = School.objects.all()
     serializer_class = SchoolSerializer
     filter_backends = [DjangoFilterBackend]
-    filterset_fields = ['name', 'type', 'setting',]
+    filterset_fields = ['name', 'type', 'setting', 'tuition',]
 
 
 

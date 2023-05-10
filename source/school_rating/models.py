@@ -17,6 +17,7 @@ class School(models.Model):
     address = models.JSONField(default=dict)
     setting = models.CharField(max_length=100, null=False, blank=False, verbose_name='Setting')
     webpage = models.URLField(max_length=100, blank=True, null=True, verbose_name="Webpage")
+    tuition = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True, verbose_name="Tuition")
 
     def __str__(self):
         return f'{self.pk}. {self.name}'
