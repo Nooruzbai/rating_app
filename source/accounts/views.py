@@ -1,6 +1,6 @@
 import jwt
 from django.contrib.auth import get_user_model
-from rest_framework.generics import GenericAPIView, RetrieveUpdateAPIView
+from rest_framework.generics import GenericAPIView, RetrieveUpdateAPIView, RetrieveAPIView
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
 from rest_framework import status
@@ -95,6 +95,22 @@ class UserLogoutAPIView(GenericAPIView):
             return Response(status=status.HTTP_400_BAD_REQUEST)
 
 
+class ProfileDetailView(RetrieveAPIView):
+    permission_classes = (IsAuthenticated,)
+    serializer_class = ProfileSerializer
+    queryset = Profile.objects.all()
+
+    def get_queryset(self):
+        profile = self.queryset.all().filter(user_id=self.request.user)
+        return profile
+
+
+
+
+
+
+
+
 # class UserAPIView(RetrieveUpdateAPIView):
 #     """
 #     Get, Update user information
@@ -107,17 +123,20 @@ class UserLogoutAPIView(GenericAPIView):
 #         return self.request.user
 
 
-class UserProfileRetrieveUpdateAPIView(RetrieveUpdateAPIView):
-    """
-    Get, Update user profile
-    """
+# class UserProfileRetrieveUpdateAPIView(RetrieveUpdateAPIView):
+#     """
+#     Get, Update user profile
+#     """
+#
+#     queryset = Profile.objects.all()
+#     serializer_class = ProfileSerializer
+#     permission_classes = (IsAuthenticated,)
+#
+#     def get_object(self):
+#         return self.request.user.profile
 
-    queryset = Profile.objects.all()
-    serializer_class = ProfileSerializer
-    permission_classes = (IsAuthenticated,)
 
-    def get_object(self):
-        return self.request.user.profile
+
 
 # class UserAvatarAPIView(RetrieveUpdateAPIView):
 #     """

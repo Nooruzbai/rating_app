@@ -48,13 +48,13 @@ INSTALLED_APPS = [
     'rest_framework_swagger',
     'drf_yasg',
     'django_filters',
+    'corsheaders',
 
 
     # My Apps
     'school_rating',
     'accounts',
     'news',
-    'corsheaders',
 ]
 
 MIDDLEWARE = [

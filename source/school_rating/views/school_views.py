@@ -14,8 +14,6 @@ class SchoolListView(ListAPIView):
     filterset_fields = ['name', 'type', 'setting', 'tuition',]
 
 
-
-
 class SchoolCreateView(CreateAPIView):
     permission_classes = [IsAuthenticatedOrReadOnly]
     serializer_class = SchoolSerializer

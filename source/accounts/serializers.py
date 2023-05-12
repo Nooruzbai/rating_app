@@ -14,7 +14,7 @@ class CustomUserSerializer(serializers.ModelSerializer):
     # bio = serializers.CharField(source='profile.bio')
     class Meta:
         model = User
-        fields = ("id", "username", "email",'password','first_name', 'last_name',)
+        fields = ("id", "username", "email",'first_name', 'last_name',)
 
 
 class UserRegistrationSerializer(serializers.ModelSerializer):
@@ -58,10 +58,11 @@ class UserLoginSerializer(serializers.Serializer):
         raise serializers.ValidationError("Incorrect Credentials")
 
 
-class ProfileSerializer(CustomUserSerializer):
+class ProfileSerializer(serializers.ModelSerializer):
     """
     Serializer class to serialize the user Profile model
     """
+    user = CustomUserSerializer(required=True, many=False)
 
     class Meta:
         model = Profile
