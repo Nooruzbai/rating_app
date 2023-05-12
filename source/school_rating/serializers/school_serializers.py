@@ -6,7 +6,7 @@ from school_rating.serializers.comment_serializers import SchoolCommentSerialize
 class SchoolSerializer(serializers.ModelSerializer):
     class Meta:
         model = School
-        fields = ['id', 'name', 'description', 'type', 'address', 'setting', 'webpage']
+        fields = ['id', 'name', 'image', 'description', 'type', 'address', 'setting', 'webpage']
 
 
 class SchoolRatingSerializer(serializers.ModelSerializer):
@@ -21,4 +21,4 @@ class SchoolDetailSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = School
-        fields = ['id', 'name', 'description', 'type', 'tuition', 'address', 'setting', 'webpage', 'ratings',  'comments']
+        fields = ['id', 'name', 'image', 'description', 'type', 'tuition', 'address', 'setting', 'webpage', 'ratings',  'comments']
