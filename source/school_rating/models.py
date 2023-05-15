@@ -1,6 +1,5 @@
 from django.contrib.auth import get_user_model
 from django.db import models
-
 from school_rating.managers import SoftDeleteManager
 
 User = get_user_model()
@@ -14,6 +13,9 @@ class SoftDeleteModel(models.Model):
     objects = SoftDeleteManager()
     all_objects = models.Manager()
 
+    class Meta:
+        abstract = True
+
     def delete(self):
         self.is_deleted = True
         self.save()
@@ -21,6 +23,9 @@ class SoftDeleteModel(models.Model):
     def restore(self):
         self.is_deleted = False
         self.save()
+
+    def hard_delete(self):
+        super(SoftDeleteModel, self).delete()
 
     class Meta:
         abstract = True
