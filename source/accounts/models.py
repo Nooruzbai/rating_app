@@ -6,6 +6,7 @@ from django.contrib.auth import get_user_model
 
 from .managers import CustomUserManager
 
+
 class CustomUser(AbstractUser):
     email = models.EmailField(_("email address"), unique=True)
     is_verified = models.BooleanField(default=False)

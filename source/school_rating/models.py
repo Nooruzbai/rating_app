@@ -1,7 +1,7 @@
 from django.contrib.auth import get_user_model
 from django.db import models
 
-from rating import settings
+from school_rating.managers import SoftDeleteManager
 
 User = get_user_model()
 
@@ -9,7 +9,24 @@ User = get_user_model()
 CHOICES = [('unknown', 'Unknown'), ('public', 'Public'), ('private', 'Private')]
 
 
-class School(models.Model):
+class SoftDeleteModel(models.Model):
+    is_deleted = models.BooleanField(default=False)
+    objects = SoftDeleteManager()
+    all_objects = models.Manager()
+
+    def delete(self):
+        self.is_deleted = True
+        self.save()
+
+    def restore(self):
+        self.is_deleted = False
+        self.save()
+
+    class Meta:
+        abstract = True
+
+
+class School(SoftDeleteModel):
     name = models.CharField(max_length=100, null=False, blank=False, verbose_name='Name')
     description = models.TextField(max_length=400, null=True, blank=True, verbose_name='Description')
     type = models.TextField(default=CHOICES[0], choices=CHOICES,
