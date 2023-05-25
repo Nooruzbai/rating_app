@@ -3,6 +3,7 @@
     "model": "school_rating.school",
     "pk": 1,
     "fields": {
+        "is_deleted": false,
         "name": "Bilimkana-Bishkek",
         "description": "The Best School",
         "type": "private",
@@ -10,13 +11,16 @@
             "city": "Bishkek"
         },
         "setting": "City",
-        "webpage": "http://bilimkana.kg/"
+        "webpage": "http://bilimkana.kg/",
+        "tuition": "3000.00",
+        "image": "images/school/2020-09-03_16-15-35_889376.jpg"
     }
 },
 {
     "model": "school_rating.school",
     "pk": 2,
     "fields": {
+        "is_deleted": false,
         "name": "School #71",
         "description": "The second best school!",
         "type": "public",
@@ -24,13 +28,16 @@
             "city": "Bishkek"
         },
         "setting": "City",
-        "webpage": "http://71.com"
+        "webpage": "http://71.com",
+        "tuition": null,
+        "image": ""
     }
 },
 {
     "model": "school_rating.school",
     "pk": 3,
     "fields": {
+        "is_deleted": false,
         "name": "#64",
         "description": "One of the best",
         "type": "public",
@@ -38,13 +45,16 @@
             "city": "Bishkek"
         },
         "setting": "City",
-        "webpage": "http://64.kg"
+        "webpage": "http://64.kg",
+        "tuition": null,
+        "image": ""
     }
 },
 {
     "model": "school_rating.school",
     "pk": 4,
     "fields": {
+        "is_deleted": false,
         "name": "#70",
         "description": "One of the best",
         "type": "public",
@@ -52,13 +62,16 @@
             "city": "Bishkek"
         },
         "setting": "City",
-        "webpage": "http://70.com"
+        "webpage": "http://70.com",
+        "tuition": null,
+        "image": ""
     }
 },
 {
     "model": "school_rating.school",
     "pk": 5,
     "fields": {
+        "is_deleted": false,
         "name": "BIS",
         "description": "European School",
         "type": "private",
@@ -66,7 +79,9 @@
             "city": "Bishkek"
         },
         "setting": "City",
-        "webpage": "http://bis.kg/"
+        "webpage": "http://bis.kg/",
+        "tuition": null,
+        "image": ""
     }
 },
 {
@@ -288,6 +303,16 @@
     }
 },
 {
+    "model": "school_rating.comment",
+    "pk": 8,
+    "fields": {
+        "text": "bla bla bla",
+        "user": 1,
+        "school": 5,
+        "date_created": "2023-04-23T11:30:02.562Z"
+    }
+},
+{
     "model": "school_rating.commentlike",
     "pk": 12,
     "fields": {
@@ -330,6 +355,15 @@
         "user": 1,
         "comment": 4,
         "date_created": "2023-04-22T09:35:20.269Z"
+    }
+},
+{
+    "model": "school_rating.commentlike",
+    "pk": 48,
+    "fields": {
+        "user": 1,
+        "comment": 8,
+        "date_created": "2023-04-23T11:31:06.073Z"
     }
 }
 ]
