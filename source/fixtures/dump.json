@@ -8,7 +8,7 @@
         "description": "The Best School",
         "type": "private",
         "address": {
-            "city": "Bishkek"
+            "city": "1"
         },
         "setting": "City",
         "webpage": "http://bilimkana.kg/",
@@ -25,7 +25,7 @@
         "description": "The second best school!",
         "type": "public",
         "address": {
-            "city": "Bishkek"
+            "city": "1"
         },
         "setting": "City",
         "webpage": "http://71.com",
@@ -42,7 +42,7 @@
         "description": "One of the best",
         "type": "public",
         "address": {
-            "city": "Bishkek"
+            "city": "1"
         },
         "setting": "City",
         "webpage": "http://64.kg",
@@ -59,7 +59,7 @@
         "description": "One of the best",
         "type": "public",
         "address": {
-            "city": "Bishkek"
+            "city": "1"
         },
         "setting": "City",
         "webpage": "http://70.com",
@@ -76,7 +76,7 @@
         "description": "European School",
         "type": "private",
         "address": {
-            "city": "Bishkek"
+            "city": "1"
         },
         "setting": "City",
         "webpage": "http://bis.kg/",
