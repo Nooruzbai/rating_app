@@ -1,0 +1,207 @@
+[
+{
+    "model": "school_rating.school",
+    "pk": 1,
+    "fields": {
+        "is_deleted": false,
+        "name": "Bilimkana-Bishkek",
+        "description": "The Best School",
+        "type": "private",
+        "address": {
+            "city": "Bishkek"
+        },
+        "setting": "city",
+        "webpage": "http://bilimkana.kg",
+        "tuition": "30000.00",
+        "image": ""
+    }
+},
+{
+    "model": "school_rating.school",
+    "pk": 2,
+    "fields": {
+        "is_deleted": false,
+        "name": "71",
+        "description": "The best public school",
+        "type": "public",
+        "address": {
+            "city": "Bishkek"
+        },
+        "setting": "city",
+        "webpage": "http://71.kg",
+        "tuition": "3000.00",
+        "image": ""
+    }
+},
+{
+    "model": "school_rating.school",
+    "pk": 3,
+    "fields": {
+        "is_deleted": false,
+        "name": "70",
+        "description": "The best ORT school",
+        "type": "public",
+        "address": {
+            "city": "Bishkek"
+        },
+        "setting": "city",
+        "webpage": "http://70.kg",
+        "tuition": "5000.00",
+        "image": ""
+    }
+},
+{
+    "model": "school_rating.school",
+    "pk": 4,
+    "fields": {
+        "is_deleted": false,
+        "name": "BIS",
+        "description": "The best European school",
+        "type": "private",
+        "address": {
+            "city": "Bishkek"
+        },
+        "setting": "city",
+        "webpage": "http://bis.kg",
+        "tuition": "20000.00",
+        "image": ""
+    }
+},
+{
+    "model": "school_rating.school",
+    "pk": 5,
+    "fields": {
+        "is_deleted": false,
+        "name": "Prioritete",
+        "description": "The best math school",
+        "type": "private",
+        "address": {
+            "city": "Bishkek"
+        },
+        "setting": "city",
+        "webpage": "http://prioritet.kg",
+        "tuition": "300000.00",
+        "image": ""
+    }
+},
+{
+    "model": "school_rating.rating",
+    "pk": 1,
+    "fields": {
+        "name": "ORT",
+        "date_created": "2023-07-15T11:01:54.377Z"
+    }
+},
+{
+    "model": "school_rating.rating",
+    "pk": 2,
+    "fields": {
+        "name": "Math",
+        "date_created": "2023-07-15T11:02:02.226Z"
+    }
+},
+{
+    "model": "school_rating.rating",
+    "pk": 3,
+    "fields": {
+        "name": "English",
+        "date_created": "2023-07-15T11:02:09.324Z"
+    }
+},
+{
+    "model": "school_rating.rating",
+    "pk": 4,
+    "fields": {
+        "name": "Chemistry",
+        "date_created": "2023-07-15T11:02:21.386Z"
+    }
+},
+{
+    "model": "school_rating.rating",
+    "pk": 5,
+    "fields": {
+        "name": "Best European",
+        "date_created": "2023-07-15T11:02:44.286Z"
+    }
+},
+{
+    "model": "school_rating.schoolrating",
+    "pk": 1,
+    "fields": {
+        "school": 1,
+        "rating": 3,
+        "score": 45,
+        "date_created": "2023-07-15T11:03:12.712Z"
+    }
+},
+{
+    "model": "school_rating.schoolrating",
+    "pk": 2,
+    "fields": {
+        "school": 3,
+        "rating": 3,
+        "score": null,
+        "date_created": "2023-07-15T11:03:19.993Z"
+    }
+},
+{
+    "model": "school_rating.schoolrating",
+    "pk": 3,
+    "fields": {
+        "school": 3,
+        "rating": 3,
+        "score": 23,
+        "date_created": "2023-07-15T11:03:28.223Z"
+    }
+},
+{
+    "model": "school_rating.schoolrating",
+    "pk": 4,
+    "fields": {
+        "school": 5,
+        "rating": 4,
+        "score": 323,
+        "date_created": "2023-07-15T11:03:36.405Z"
+    }
+},
+{
+    "model": "school_rating.schoolrating",
+    "pk": 5,
+    "fields": {
+        "school": 2,
+        "rating": 3,
+        "score": 323,
+        "date_created": "2023-07-15T11:03:45.752Z"
+    }
+},
+{
+    "model": "school_rating.schoolrating",
+    "pk": 6,
+    "fields": {
+        "school": 1,
+        "rating": 2,
+        "score": 32,
+        "date_created": "2023-07-15T11:03:55.501Z"
+    }
+},
+{
+    "model": "school_rating.schoolrating",
+    "pk": 7,
+    "fields": {
+        "school": 1,
+        "rating": 3,
+        "score": 13,
+        "date_created": "2023-07-15T11:04:09.517Z"
+    }
+},
+{
+    "model": "school_rating.comment",
+    "pk": 1,
+    "fields": {
+        "text": "Fuck you all",
+        "user": 1,
+        "school": 2,
+        "date_created": "2023-07-15T11:04:39.298Z"
+    }
+}
+]
