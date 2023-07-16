@@ -46,7 +46,7 @@ class UserRegistrationAPIView(GenericAPIView):
         data = {"email_body": email_body, "to_email": user.email, "email_subject":"Verify your email",
                 "tokens": {"refresh_token": str(token), "refresh": str(token.access_token)}}
 
-        # Uncomment this function to send message with token to an email
+        # Send message with token to an email.
         # Util.send_email(data)
         return Response(data, status=status.HTTP_201_CREATED)
 
@@ -150,11 +150,13 @@ class ProfileDetailView(RetrieveAPIView):
 #     def get_object(self):
 #         return self.request.user.profile
 
+
+
 class VerifyEmail(GenericAPIView):
     serializer_class = CustomUserSerializer
-
+    queryset = CustomUser
     @swagger_auto_schema(
-        operation_summary="User Verification by email"
+        operation_summary="User Verification by email",
     )
     def get(self, request, *args, **kwargs):
         token = request.GET.get('token')
@@ -162,8 +164,8 @@ class VerifyEmail(GenericAPIView):
             payload = jwt.decode(token, settings.SECRET_KEY, algorithms=["HS256"])
             user = CustomUser.objects.get(id=payload['user_id'])
             if not user.is_verified:
-               user.is_verified = True
-               user.save()
+                user.is_verified = True
+                user.save()
             return Response({'email': 'Successfully activated'}, status=status.HTTP_200_OK)
         except jwt.ExpiredSignatureError as identifier:
             return Response({'error': 'Activation Expired'}, status=status.HTTP_400_BAD_REQUEST)

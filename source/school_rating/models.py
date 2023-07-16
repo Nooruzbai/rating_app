@@ -27,9 +27,6 @@ class SoftDeleteModel(models.Model):
     def hard_delete(self):
         super(SoftDeleteModel, self).delete()
 
-    class Meta:
-        abstract = True
-
 
 class School(SoftDeleteModel):
     name = models.CharField(max_length=100, null=False, blank=False, verbose_name='Name')
@@ -49,6 +46,7 @@ class School(SoftDeleteModel):
         db_table = 'school'
         verbose_name = 'School'
         verbose_name_plural = 'Schools'
+        ordering = ['id']
 
 
 class Rating(models.Model):
@@ -105,7 +103,7 @@ class CommentLike(models.Model):
         return f'{self.pk}. {self.user}, {self.comment}'
 
     class Meta:
-        db_table = 'like'
-        verbose_name = 'Like'
-        verbose_name_plural = 'Likes'
+        db_table = 'comment_like'
+        verbose_name = 'CommentLike'
+        verbose_name_plural = 'CommentLikes'
 
