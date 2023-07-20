@@ -61,5 +61,8 @@ DATABASE=postgres
 
 python3 manage.py runserver
 
+12. If you want to run it in docker, please input command bellow:  
+docker compose up --build
+
 In order to go to the admin dashboard, please go to the following url http://localhost:8000/admin  
 If you have encountered any issues while installing the application, please contact me to nooruzbay@gmail.com
