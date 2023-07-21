@@ -1,12 +1,14 @@
 from django.contrib.auth import authenticate, get_user_model
 from rest_framework import serializers
 
+from school_rating.models import SchoolLike
+from school_rating.serializers.school_serializers import SchoolLikeSerializer
 from .models import CustomUser, Profile
 
 User = get_user_model()
 
 
-class CustomUserSerializer(serializers.ModelSerializer):
+class UserSerializer(serializers.ModelSerializer):
     """
     Serializer class to serialize CustomUser model.
     
@@ -62,11 +64,12 @@ class ProfileSerializer(serializers.ModelSerializer):
     """
     Serializer class to serialize the user Profile model
     """
-    user = CustomUserSerializer(required=True, many=False)
+    user = UserSerializer(required=True, many=False)
+    liked_schools = SchoolLikeSerializer(source='user.school_likes', many=True)
 
     class Meta:
         model = Profile
-        fields = '__all__'
+        fields = ('user', 'liked_schools')
 
 
 class ProfileAvatarSerializer(serializers.ModelSerializer):

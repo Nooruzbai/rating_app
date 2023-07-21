@@ -5,7 +5,6 @@ from school_rating.managers import SoftDeleteManager
 User = get_user_model()
 
 # Create your models here.
-CHOICES = [('unknown', 'Unknown'), ('public', 'Public'), ('private', 'Private')]
 
 
 class SoftDeleteModel(models.Model):
@@ -46,6 +45,19 @@ class School(SoftDeleteModel):
         verbose_name = 'School'
         verbose_name_plural = 'Schools'
         ordering = ['id']
+
+
+class SchoolLike(models.Model):
+    user_id = models.ForeignKey(User, related_name='school_likes', on_delete=models.CASCADE, verbose_name='User')
+    school_id = models.ForeignKey('school_rating.School', related_name="school_likes", on_delete=models.CASCADE, verbose_name='comment')
+    date_created = models.DateTimeField(auto_now_add=True, verbose_name='Date Created')
+
+    class Meta:
+        db_table = 'school_like'
+        verbose_name = 'SchoolLike'
+        verbose_name_plural = 'SchoolLikes'
+
+
 
 
 class Rating(models.Model):

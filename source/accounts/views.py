@@ -7,8 +7,8 @@ from rest_framework import status
 from rest_framework_simplejwt.tokens import RefreshToken
 
 from accounts.models import Profile, CustomUser
-from accounts.serializers import UserRegistrationSerializer, UserLoginSerializer, CustomUserSerializer, \
-    ProfileSerializer, ProfileAvatarSerializer
+from accounts.serializers import UserRegistrationSerializer, UserLoginSerializer, ProfileSerializer, \
+    ProfileAvatarSerializer, UserSerializer
 from django.contrib.sites.shortcuts import get_current_site
 from django.urls import reverse
 from django.conf import settings
@@ -67,7 +67,7 @@ class UserLoginAPIView(GenericAPIView):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         user = serializer.validated_data
-        serializer = CustomUserSerializer(user)
+        serializer = UserSerializer(user)
         token = RefreshToken.for_user(user)
         data = serializer.data
         data["tokens"] = {"refresh": str(token), "access": str(token.access_token)}
@@ -80,7 +80,7 @@ class UserLogoutAPIView(GenericAPIView):
     """
 
     permission_classes = (IsAuthenticated,)
-    serializer_class = CustomUserSerializer
+    serializer_class = UserSerializer
 
     @swagger_auto_schema(
         operation_summary="User Logout",
@@ -96,7 +96,7 @@ class UserLogoutAPIView(GenericAPIView):
 
 
 class ProfileDetailView(RetrieveAPIView):
-    permission_classes = (IsAuthenticated,)
+    # permission_classes = (IsAuthenticated,)
     serializer_class = ProfileSerializer
     queryset = Profile.objects.all()
 
@@ -153,7 +153,7 @@ class ProfileDetailView(RetrieveAPIView):
 
 
 class VerifyEmail(GenericAPIView):
-    serializer_class = CustomUserSerializer
+    serializer_class = UserSerializer
     queryset = CustomUser
     @swagger_auto_schema(
         operation_summary="User Verification by email",

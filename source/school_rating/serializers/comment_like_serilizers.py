@@ -9,8 +9,5 @@ class SchoolCommentLikeSerializer(serializers.ModelSerializer):
         model = CommentLike
         fields = ['comment', 'date_created']
 
-class CommentDislikeSerializer(serializers.ModelSerializer):
-    pass
-
 
 

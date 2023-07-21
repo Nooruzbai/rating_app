@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from school_rating.models import School, SchoolRating, CHOICES
+from school_rating.models import School, SchoolRating, SchoolLike
 from school_rating.serializers.comment_serializers import SchoolCommentSerializer
 
 
@@ -22,4 +22,10 @@ class SchoolDetailSerializer(serializers.ModelSerializer):
     class Meta:
         model = School
         fields = ['id', 'name', 'image', 'description', 'type', 'tuition', 'address', 'setting', 'webpage', 'ratings', 'comments']
+
+
+class SchoolLikeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = SchoolLike
+        fields = ["id", "school_id"]
 

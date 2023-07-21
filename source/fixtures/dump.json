@@ -6,11 +6,11 @@
         "is_deleted": false,
         "name": "Bilimkana-Bishkek",
         "description": "The Best School",
-        "type": "private",
+        "type": 1,
         "address": {
             "city": "Bishkek"
         },
-        "setting": "city",
+        "setting": "1",
         "webpage": "http://bilimkana.kg",
         "tuition": "30000.00",
         "image": ""
@@ -23,11 +23,11 @@
         "is_deleted": false,
         "name": "71",
         "description": "The best public school",
-        "type": "public",
+        "type": 1,
         "address": {
             "city": "Bishkek"
         },
-        "setting": "city",
+        "setting": 1,
         "webpage": "http://71.kg",
         "tuition": "3000.00",
         "image": ""
@@ -40,11 +40,11 @@
         "is_deleted": false,
         "name": "70",
         "description": "The best ORT school",
-        "type": "public",
+        "type": 1,
         "address": {
             "city": "Bishkek"
         },
-        "setting": "city",
+        "setting": 1,
         "webpage": "http://70.kg",
         "tuition": "5000.00",
         "image": ""
@@ -57,11 +57,11 @@
         "is_deleted": false,
         "name": "BIS",
         "description": "The best European school",
-        "type": "private",
+        "type": 1,
         "address": {
             "city": "Bishkek"
         },
-        "setting": "city",
+        "setting": 1,
         "webpage": "http://bis.kg",
         "tuition": "20000.00",
         "image": ""
@@ -74,11 +74,11 @@
         "is_deleted": false,
         "name": "Prioritete",
         "description": "The best math school",
-        "type": "private",
+        "type": 1,
         "address": {
             "city": "Bishkek"
         },
-        "setting": "city",
+        "setting": 1,
         "webpage": "http://prioritet.kg",
         "tuition": "300000.00",
         "image": ""

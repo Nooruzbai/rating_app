@@ -6,6 +6,7 @@ from school_rating.views.comment_views import SchoolCommentListView, SchoolComme
 from school_rating.views.dropdown_data_views import get_school_cities_view, get_school_setting_view, \
     get_school_type_view
 from school_rating.views.rating_views import RatingListView, RatingDetailView
+from school_rating.views.school_like_views import SchoolLikeView
 from school_rating.views.school_views import SchoolListView, SchoolDetailView, SchoolCreateView, SchoolDeleteView, \
     SchoolUpdateView
 
@@ -21,6 +22,9 @@ urlpatterns = [
 
     path('ratings/list/', RatingListView.as_view(), name="rating_list_view"),
     path('rating/detail/<int:pk>/', RatingDetailView.as_view(), name="rating_detail_view"),
+
+
+    path('school/like/', SchoolLikeView.as_view(), name='school_like_view'),
 
 
     path('school/comments/list/', SchoolCommentListView.as_view(), name='comment_list_view'),
