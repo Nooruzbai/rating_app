@@ -9,7 +9,7 @@ from school_rating.serializers.school_serializers import SchoolLikeSerializer
 
 
 class SchoolLikeView(CreateAPIView):
-    # permission_classes = [IsAuthenticatedOrReadOnly]
+    permission_classes = [IsAuthenticatedOrReadOnly]
     serializer_class = SchoolLikeSerializer
 
     def create(self, request, *args, **kwargs):

@@ -1,4 +1,3 @@
-from drf_yasg.utils import swagger_auto_schema
 from rest_framework.generics import ListAPIView, RetrieveAPIView, DestroyAPIView, UpdateAPIView, CreateAPIView
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
 

@@ -21,7 +21,9 @@ class SchoolDetailSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = School
-        fields = ['id', 'name', 'image', 'description', 'type', 'tuition', 'address', 'setting', 'webpage', 'ratings', 'comments']
+        fields = ['id', 'name', 'image', 'description',
+                  'type', 'tuition', 'address', 'setting',
+                  'webpage', 'ratings', 'comments']
 
 
 class SchoolLikeSerializer(serializers.ModelSerializer):

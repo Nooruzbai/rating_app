@@ -1,7 +1,6 @@
 from rest_framework import serializers
 
-from school_rating.models import Comment, CommentLike
-from school_rating.serializers.comment_like_serilizers import SchoolCommentLikeSerializer
+from school_rating.models import Comment
 
 
 class SchoolCommentSerializer(serializers.ModelSerializer):
@@ -18,6 +17,7 @@ class SchoolCommentCreateSerializer(serializers.ModelSerializer):
 
 class SchoolCommentDetailSerializer(serializers.ModelSerializer):
     total_likes = serializers.SerializerMethodField('get_total_likes')
+
     class Meta:
         model = Comment
         fields = ['id', 'user_id', 'school_id', 'text', 'date_created', 'total_likes']

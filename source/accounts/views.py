@@ -6,7 +6,7 @@ from rest_framework.response import Response
 from rest_framework import status
 from rest_framework_simplejwt.tokens import RefreshToken
 
-from accounts.models import Profile, CustomUser
+from accounts.models import CustomUser
 from accounts.serializers import UserSerializer, UserRegistrationSerializer, UserLoginSerializer
 from django.contrib.sites.shortcuts import get_current_site
 from django.urls import reverse
@@ -95,65 +95,27 @@ class UserLogoutAPIView(GenericAPIView):
 
 
 class UserDetailView(RetrieveAPIView):
-    # permission_classes = (IsAuthenticated,)
+    permission_classes = (IsAuthenticated,)
     serializer_class = UserSerializer
     queryset = User.objects.all()
 
-    # def get_queryset(self):
-    #     user = self.queryset.filter(user_id=self.request.user.id)
-    #     return user
 
+class UserProfileUpdateAPIView(RetrieveUpdateAPIView):
+    """
+    Get, Update user information
+    """
 
+    permission_classes = (IsAuthenticated,)
+    serializer_class = UserSerializer
 
-
-
-
-
-
-# class UserAPIView(RetrieveUpdateAPIView):
-#     """
-#     Get, Update user information
-#     """
-#
-#     permission_classes = (IsAuthenticated,)
-#     serializer_class = CustomUserSerializer
-#
-#     def get_object(self):
-#         return self.request.user
-
-
-# class UserProfileRetrieveUpdateAPIView(RetrieveUpdateAPIView):
-#     """
-#     Get, Update user profile
-#     """
-#
-#     queryset = Profile.objects.all()
-#     serializer_class = ProfileSerializer
-#     permission_classes = (IsAuthenticated,)
-#
-#     def get_object(self):
-#         return self.request.user.profile
-
-
-
-
-# class UserAvatarAPIView(RetrieveUpdateAPIView):
-#     """
-#     Get, Update user avatar
-#     """
-#
-#     queryset = Profile.objects.all()
-#     serializer_class = ProfileAvatarSerializer
-#     permission_classes = (IsAuthenticated,)
-#
-#     def get_object(self):
-#         return self.request.user.profile
-
+    def get_object(self):
+        return self.request.user
 
 
 class VerifyEmail(GenericAPIView):
     serializer_class = UserSerializer
     queryset = CustomUser
+
     @swagger_auto_schema(
         operation_summary="User Verification by email",
     )

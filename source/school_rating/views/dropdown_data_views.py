@@ -4,7 +4,7 @@ from rest_framework.response import Response
 
 
 @api_view(['GET'])
-@swagger_auto_schema(operation_description="Recieves all cities")
+@swagger_auto_schema(operation_description="Receives all cities")
 def get_school_cities_view(request):
         content = {
             "0": "Not Assigned",
@@ -20,7 +20,7 @@ def get_school_cities_view(request):
 
 
 @api_view(['GET'])
-@swagger_auto_schema(operation_description="Recieves all settings")
+@swagger_auto_schema(operation_description="Receives all settings")
 def get_school_setting_view(request):
     content = {
         "0": "Not Assigned",
@@ -33,7 +33,7 @@ def get_school_setting_view(request):
 
 
 @api_view(['GET'])
-@swagger_auto_schema(operation_description="Recieves all types")
+@swagger_auto_schema(operation_description="Receives all types")
 def get_school_type_view(request):
     content = {
         "0": "Not Assigned",

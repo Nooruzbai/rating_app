@@ -7,14 +7,14 @@ from school_rating.serializers.rating_serializers import RatingSerializer, Ratin
 
 
 class RatingListView(ListAPIView):
-    permission_classes = [IsAuthenticatedOrReadOnly,]
+    permission_classes = [IsAuthenticatedOrReadOnly]
     serializer_class = RatingSerializer
     queryset = Rating.objects.all()
     filter_backends = [DjangoFilterBackend]
-    filterset_fields = ['name',]
+    filterset_fields = ['name']
 
 
 class RatingDetailView(RetrieveAPIView):
-    permission_classes = [IsAuthenticatedOrReadOnly,]
+    permission_classes = [IsAuthenticatedOrReadOnly]
     serializer_class = RatingDetailSerializer
     queryset = Rating.objects.all()

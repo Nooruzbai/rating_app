@@ -11,6 +11,7 @@ class RatingSerializer(serializers.ModelSerializer):
 
 class RatingSchoolSerializer(serializers.ModelSerializer):
     school = serializers.SlugRelatedField(slug_field="name", read_only=True)
+
     class Meta:
         model = SchoolRating
         fields = ['school', 'score', 'date_created']
@@ -18,6 +19,7 @@ class RatingSchoolSerializer(serializers.ModelSerializer):
 
 class RatingDetailSerializer(serializers.ModelSerializer):
     schools = RatingSchoolSerializer(many=True, read_only=True)
+
     class Meta:
         model = Rating
         fields = ['name', 'date_created', 'schools']

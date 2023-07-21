@@ -48,16 +48,16 @@ class School(SoftDeleteModel):
 
 
 class SchoolLike(models.Model):
-    user_id = models.ForeignKey(User, related_name='school_likes', on_delete=models.CASCADE, verbose_name='User')
-    school_id = models.ForeignKey('school_rating.School', related_name="school_likes", on_delete=models.CASCADE, verbose_name='comment')
+    user_id = models.ForeignKey(User, related_name='school_likes',
+                                on_delete=models.CASCADE, verbose_name='User')
+    school_id = models.ForeignKey('school_rating.School', related_name="school_likes",
+                                  on_delete=models.CASCADE, verbose_name='comment')
     date_created = models.DateTimeField(auto_now_add=True, verbose_name='Date Created')
 
     class Meta:
         db_table = 'school_like'
         verbose_name = 'SchoolLike'
         verbose_name_plural = 'SchoolLikes'
-
-
 
 
 class Rating(models.Model):
@@ -107,7 +107,8 @@ class Comment(models.Model):
 
 class CommentLike(models.Model):
     user = models.ForeignKey(User, related_name='comment_likes', on_delete=models.CASCADE, verbose_name='User')
-    comment = models.ForeignKey('school_rating.Comment', related_name="comment_likes", on_delete=models.CASCADE, verbose_name='comment')
+    comment = models.ForeignKey('school_rating.Comment', related_name="comment_likes",
+                                on_delete=models.CASCADE, verbose_name='comment')
     date_created = models.DateTimeField(auto_now_add=True, verbose_name='Date Created')
 
     def __str__(self):

@@ -5,7 +5,11 @@ from rest_framework_simplejwt.views import (
     TokenVerifyView,
 )
 
-from accounts.views import UserRegistrationAPIView, UserLoginAPIView, UserLogoutAPIView, VerifyEmail, UserDetailView
+from accounts.views import UserRegistrationAPIView, \
+                            UserLoginAPIView, UserLogoutAPIView, VerifyEmail, \
+                            UserDetailView, \
+                            UserProfileUpdateAPIView
+
 
 app_name = 'accounts'
 
@@ -20,7 +24,6 @@ urlpatterns = [
     path('api/logout/', UserLogoutAPIView.as_view(), name="logout-user"),
 
     path('api/user_profile_detail_view/<int:pk>/', UserDetailView.as_view(), name="user_profile_view"),
-    # path('api/user_detail_update_view/', UserProfileRetrieveUpdateAPIView.as_view(), name="user_profile_detail_update"),
-    # path('api/user_profile_view/avatar/', UserAvatarAPIView.as_view(), name="user-avatar"),
+    path('api/user_detail_update_view/', UserProfileUpdateAPIView.as_view(), name="user_profile_detail_update"),
 
 ]
