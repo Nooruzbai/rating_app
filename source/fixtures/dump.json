@@ -6,14 +6,14 @@
         "is_deleted": false,
         "name": "Bilimkana-Bishkek",
         "description": "The Best School",
-        "type": 1,
         "address": {
             "city": "Bishkek"
         },
-        "setting": "1",
+        "setting": 1,
         "webpage": "http://bilimkana.kg",
         "tuition": "30000.00",
-        "image": ""
+        "image": "",
+        "type": 1
     }
 },
 {
@@ -23,14 +23,14 @@
         "is_deleted": false,
         "name": "71",
         "description": "The best public school",
-        "type": 1,
         "address": {
             "city": "Bishkek"
         },
         "setting": 1,
         "webpage": "http://71.kg",
         "tuition": "3000.00",
-        "image": ""
+        "image": "",
+        "type": 1
     }
 },
 {
@@ -40,14 +40,14 @@
         "is_deleted": false,
         "name": "70",
         "description": "The best ORT school",
-        "type": 1,
         "address": {
             "city": "Bishkek"
         },
         "setting": 1,
         "webpage": "http://70.kg",
         "tuition": "5000.00",
-        "image": ""
+        "image": "",
+        "type": 1
     }
 },
 {
@@ -57,14 +57,14 @@
         "is_deleted": false,
         "name": "BIS",
         "description": "The best European school",
-        "type": 1,
         "address": {
             "city": "Bishkek"
         },
         "setting": 1,
         "webpage": "http://bis.kg",
         "tuition": "20000.00",
-        "image": ""
+        "image": "",
+        "type": 1
     }
 },
 {
@@ -74,14 +74,59 @@
         "is_deleted": false,
         "name": "Prioritete",
         "description": "The best math school",
-        "type": 1,
         "address": {
             "city": "Bishkek"
         },
         "setting": 1,
         "webpage": "http://prioritet.kg",
         "tuition": "300000.00",
-        "image": ""
+        "image": "",
+        "type": 1
+    }
+},
+{
+    "model": "school_rating.schoollike",
+    "pk": 1,
+    "fields": {
+        "user_id": 3,
+        "school_id": 3,
+        "date_created": "2023-07-21T09:23:50.960Z"
+    }
+},
+{
+    "model": "school_rating.schoollike",
+    "pk": 2,
+    "fields": {
+        "user_id": 3,
+        "school_id": 2,
+        "date_created": "2023-07-21T09:26:05.674Z"
+    }
+},
+{
+    "model": "school_rating.schoollike",
+    "pk": 3,
+    "fields": {
+        "user_id": 3,
+        "school_id": 1,
+        "date_created": "2023-07-21T09:26:15.634Z"
+    }
+},
+{
+    "model": "school_rating.schoollike",
+    "pk": 4,
+    "fields": {
+        "user_id": 1,
+        "school_id": 2,
+        "date_created": "2023-07-21T10:49:10.688Z"
+    }
+},
+{
+    "model": "school_rating.schoollike",
+    "pk": 5,
+    "fields": {
+        "user_id": 1,
+        "school_id": 3,
+        "date_created": "2023-07-21T12:20:33.782Z"
     }
 },
 {
