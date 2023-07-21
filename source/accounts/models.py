@@ -10,6 +10,7 @@ from .managers import CustomUserManager
 class CustomUser(AbstractUser):
     email = models.EmailField(_("email address"), unique=True)
     is_verified = models.BooleanField(default=False)
+    # data_of_birth = models.DateField()
 
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = ["username"]
@@ -18,6 +19,7 @@ class CustomUser(AbstractUser):
 
     def __str__(self):
         return self.email
+
 
 User = get_user_model()
 

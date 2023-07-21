@@ -7,8 +7,7 @@ from rest_framework import status
 from rest_framework_simplejwt.tokens import RefreshToken
 
 from accounts.models import Profile, CustomUser
-from accounts.serializers import UserRegistrationSerializer, UserLoginSerializer, ProfileSerializer, \
-    ProfileAvatarSerializer, UserSerializer
+from accounts.serializers import UserSerializer, UserRegistrationSerializer, UserLoginSerializer
 from django.contrib.sites.shortcuts import get_current_site
 from django.urls import reverse
 from django.conf import settings
@@ -95,14 +94,14 @@ class UserLogoutAPIView(GenericAPIView):
             return Response(status=status.HTTP_400_BAD_REQUEST)
 
 
-class ProfileDetailView(RetrieveAPIView):
+class UserDetailView(RetrieveAPIView):
     # permission_classes = (IsAuthenticated,)
-    serializer_class = ProfileSerializer
-    queryset = Profile.objects.all()
+    serializer_class = UserSerializer
+    queryset = User.objects.all()
 
-    def get_queryset(self):
-        profile = self.queryset.filter(user_id=self.request.user.id)
-        return profile
+    # def get_queryset(self):
+    #     user = self.queryset.filter(user_id=self.request.user.id)
+    #     return user
 
 
 

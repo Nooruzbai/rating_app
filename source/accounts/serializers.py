@@ -13,10 +13,12 @@ class UserSerializer(serializers.ModelSerializer):
     Serializer class to serialize CustomUser model.
     
     """
-    # bio = serializers.CharField(source='profile.bio')
+    bio = serializers.CharField(source='profile.bio')
+    active = serializers.BooleanField(source='is_active')
+    verified = serializers.BooleanField(source='is_verified')
     class Meta:
         model = User
-        fields = ("id", "username", "email",'first_name', 'last_name',)
+        fields = ("id", "username", "email", 'first_name', 'last_name', 'active', 'verified', "date_joined", 'bio')
 
 
 class UserRegistrationSerializer(serializers.ModelSerializer):
@@ -59,24 +61,3 @@ class UserLoginSerializer(serializers.Serializer):
             return user
         raise serializers.ValidationError("Incorrect Credentials")
 
-
-class ProfileSerializer(serializers.ModelSerializer):
-    """
-    Serializer class to serialize the user Profile model
-    """
-    user = UserSerializer(required=True, many=False)
-    liked_schools = SchoolLikeSerializer(source='user.school_likes', many=True)
-
-    class Meta:
-        model = Profile
-        fields = ('user', 'liked_schools')
-
-
-class ProfileAvatarSerializer(serializers.ModelSerializer):
-    """
-    Serializer class to serialize the avatar
-    """
-
-    class Meta:
-        model = Profile
-        fields = ("profile_picture",)
