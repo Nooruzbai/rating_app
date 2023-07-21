@@ -1,9 +1,10 @@
-from rest_framework.generics import ListAPIView, RetrieveAPIView, DestroyAPIView, UpdateAPIView, CreateAPIView
+from rest_framework.generics import ListAPIView, RetrieveAPIView, DestroyAPIView, \
+                                    UpdateAPIView, CreateAPIView
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
 
 from school_rating.models import Comment
-from school_rating.serializers.comment_serializers import SchoolCommentSerializer, SchoolCommentCreateSerializer, \
-    SchoolCommentDetailSerializer
+from school_rating.serializers.comment_serializers import SchoolCommentSerializer,SchoolCommentCreateSerializer, \
+                                                            SchoolCommentDetailSerializer
 
 
 class SchoolCommentListView(ListAPIView):
