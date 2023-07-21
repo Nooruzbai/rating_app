@@ -16,9 +16,10 @@ class UserSerializer(serializers.ModelSerializer):
     bio = serializers.CharField(source='profile.bio')
     active = serializers.BooleanField(source='is_active')
     verified = serializers.BooleanField(source='is_verified')
+
     class Meta:
         model = User
-        fields = ("id", "username", "email", 'first_name', 'last_name', 'active', 'verified', "date_joined", 'bio')
+        fields = ("id", "username", "email", 'first_name', 'last_name', 'data_of_birth', 'active', 'verified', "date_joined", 'bio')
 
 
 class UserRegistrationSerializer(serializers.ModelSerializer):
