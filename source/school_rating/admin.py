@@ -3,7 +3,7 @@ from school_rating.models import School, Rating, SchoolRating, Comment, CommentL
 
 
 class SchoolAdmin(admin.ModelAdmin):
-    list_display = ['id', 'name', 'description', 'type', 'address', 'setting', 'webpage']
+    list_display = ['id', 'name', 'description', 'address', 'type', 'setting', 'webpage']
 
 
 class RatingAdmin(admin.ModelAdmin):

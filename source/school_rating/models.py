@@ -31,13 +31,12 @@ class SoftDeleteModel(models.Model):
 class School(SoftDeleteModel):
     name = models.CharField(max_length=100, null=False, blank=False, verbose_name='Name')
     description = models.TextField(max_length=400, null=True, blank=True, verbose_name='Description')
-    type = models.TextField(default=CHOICES[0], choices=CHOICES,
-                            null=False, blank=False, verbose_name='Type')
     address = models.JSONField(default=dict)
-    setting = models.CharField(max_length=100, null=False, blank=False, verbose_name='Setting')
+    setting = models.IntegerField(default=0, null=False, blank=False, verbose_name='Setting')
     webpage = models.URLField(max_length=100, blank=True, null=True, verbose_name="Webpage")
     tuition = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True, verbose_name="Tuition")
     image = models.ImageField(null=True, blank=True, upload_to="images/school/")
+    type = models.IntegerField(default=0, blank=False, null=False, verbose_name="Type")
 
     def __str__(self):
         return f'{self.pk}. {self.name}'
