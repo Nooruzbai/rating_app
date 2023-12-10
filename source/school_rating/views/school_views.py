@@ -6,7 +6,6 @@ from rest_framework import filters
 from school_rating.models import School
 from school_rating.serializers.school_serializers import SchoolSerializer, SchoolDetailSerializer
 
-
 class SchoolListView(ListAPIView):
     permission_classes = [IsAuthenticatedOrReadOnly,]
     queryset = School.objects.all()

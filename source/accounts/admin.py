@@ -4,10 +4,6 @@ from django.contrib.auth.admin import UserAdmin
 from .forms import CustomUserChangeForm, CustomUserCreationForm
 from .models import CustomUser, Profile
 
-class ProfileInline(admin.StackedInline):
-    model = Profile
-    can_delete = False
-    verbose_name_plural = "Profile"
     
 @admin.register(CustomUser)
 class CustomUserAdmin(UserAdmin):
